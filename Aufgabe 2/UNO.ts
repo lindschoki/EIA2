@@ -584,10 +584,7 @@ namespace UNO {
             s.top = 100 + "px";
             s.margin = 10 + "px";
         }
-
-
-
-
+        
 
         function ABLAGE(): void {
             let div: HTMLDivElement = document.createElement("div");
