@@ -432,17 +432,80 @@ var UNO;
         color: "#black",
         kartenwert: "+4",
     };
-    let Cards = [C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17,
+    let ALLEKARTEN = [C1, C2, C3, C4, C5, C6, C7, C8, C9, C10, C11, C12, C13, C14, C15, C16, C17,
         C18, C19, C20, C21, C22, C23, C24, C25, C26, C27, C28, C29, C30, C31, C32, C33,
         C34, C35, C36, C37, C38, C39, C40, C41, C42, C43, C44, C45, C46, C47, C48, C49,
         C50, C51, C52, C53, C54, C55, C56, C57, C58, C59, C60, C61, C62, C63, C64, C65,
         C66, C67, C68, C69, C70, C71, C72, C73, C74, C75, C76, C77, C78, C79, C80, C81,
         C82, C83, C84, C85, C86, C87, C88, C89, C90, C91, C92, C93, C94, C95, C96, C97,
         C98, C99, C100, C101, C102, C103, C104, C105, C106, C107, C108];
-    let ZIEHEN = prompt("Gib deine Kartenanzahl ein");
-    let x;
-    for (let i = 0; i < x; i++) {
-        let randomCards = Cards[Math.floor(Cards.length * Math.random())];
+    function content() {
+        function randomCard(n) {
+            return Math.floor(Math.random() * Math.floor(n));
+        }
+        function CREATECARD(Card) {
+            let div = document.createElement("div");
+            document.body.appendChild(div);
+            div.setAttribute("id", "t" + Card);
+            document.getElementById("t" + Card).innerHTML += ALLEKARTEN[Card].kartenwert;
+            let s = div.style;
+            s.border = "thin solid black";
+            s.textAlign = "center";
+            s.padding = 20 + "px";
+            s.fontSize = "20px";
+            s.position = "relative";
+            s.backgroundColor = ALLEKARTEN[Card].color;
+            s.width = 160 + "px";
+            s.height = 220 + "px";
+            s.bottom = 20 + "px";
+            s.left = 20 + "px";
+            s.top = 100 + "px";
+            s.margin = 10 + "px";
+        }
+        function ABLAGE() {
+            let div = document.createElement("div");
+            document.body.appendChild(div);
+            div.setAttribute("id", "Ablage");
+            document.getElementById("Ablage").innerHTML += "Ablage";
+            let s = div.style;
+            s.border = "thin solid red";
+            s.textAlign = "center";
+            s.position = "absolute";
+            s.color = "white";
+            s.padding = 20 + "px";
+            s.backgroundColor = "black";
+            s.width = 180 + "px";
+            s.height = 210 + "px";
+            s.left = 10 + "px";
+            s.top = 30 + "px";
+        }
+        function DECK() {
+            let div = document.createElement("div");
+            document.body.appendChild(div);
+            div.setAttribute("id", "Deck");
+            document.getElementById("Deck").innerHTML += "Deck";
+            let s = div.style;
+            s.border = "thin solid red";
+            s.textAlign = "center";
+            s.position = "absolute";
+            s.color = "white";
+            s.padding = 20 + "px";
+            s.backgroundColor = "black";
+            s.width = 180 + "px";
+            s.height = 210 + "px";
+            s.right = 10 + "px";
+            s.top = 30 + "px";
+        }
+        let Gesamtkarten = (ALLEKARTEN.length);
+        let Kartenwahl = prompt("Gib deine Kartenanzahl ein");
+        Gesamtkarten = Number(Kartenwahl);
+        for (let i = 0; i < Gesamtkarten; i++) {
+            let Gesamtkarten = randomCard(ALLEKARTEN.length);
+            CREATECARD(Gesamtkarten);
+        }
+        ABLAGE();
+        DECK();
     }
+    document.addEventListener("DOMContentLoaded", content);
 })(UNO || (UNO = {}));
 //# sourceMappingURL=UNO.js.map
