@@ -1,8 +1,5 @@
 namespace UNO {
 
-    //Ich weis leider nicht wie ich es hinbekomme, dass sich die Karten nebeneinander aufbauen//
-
-
     interface UNOKarten {
         color: string;
         kartenwert: string;
