@@ -1,3 +1,11 @@
+/**
+Aufgabe: 2 neu
+Name: Arno Lindner
+Matrikel: 259153
+Datum: 28.10.2018
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+**/
 var UNO;
 (function (UNO) {
     let alleKarten = [
