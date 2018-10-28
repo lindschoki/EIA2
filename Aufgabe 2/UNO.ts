@@ -35,13 +35,12 @@ namespace UNO {
         function createCard(card: number): void {
             let div: HTMLElement = document.createElement("div");
             div.setAttribute("class", "Einzelkarten");
+            div.innerText = alleKarten[card].kartenwert;
             let hand: HTMLElement = document.getElementById("Hand");
             hand.appendChild(div);
-           
 
             let s: CSSStyleDeclaration = div.style;
             s.backgroundColor = alleKarten[card].color;
-            s.content = alleKarten[card].kartenwert;
         }
 
 

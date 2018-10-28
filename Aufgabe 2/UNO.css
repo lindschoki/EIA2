@@ -1,16 +1,18 @@
 .Einzelkarten {
 	border: thin solid black;
-	border-radius: 8px; text-align : "center";
+	border-radius: 8px;
 	padding: 20px;
-	font-size: 20px;
-	position: "relative";
+	font-size: 35px;
+	position: relative;
 	width: 150px;
 	height: 220px;
 	margin: 10px;
 	float: left;
-	color: black;
-	text-align: "center";
-	margin-left: 30px; 
+	text-align: center;
+	margin-left: 30px;
+	background-color: black;
+	color: white;
+	font-family: 'Concert One', cursive;
 }
 
 #Hand {
@@ -30,6 +32,7 @@
 	right: 30px;
 	top: 30px;
 	font-size: 25px;
+	font-family: 'Concert One', cursive;
 }
 
 #Ablage {
@@ -44,5 +47,6 @@
 	height: 210px;
 	left: 30px;
 	top: 30px;
-	font-size: 25px; 
+	font-size: 25px;
+	font-family: 'Concert One', cursive;
 }

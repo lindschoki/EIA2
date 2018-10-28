@@ -20,11 +20,11 @@ var UNO;
         function createCard(card) {
             let div = document.createElement("div");
             div.setAttribute("class", "Einzelkarten");
+            div.innerText = alleKarten[card].kartenwert;
             let hand = document.getElementById("Hand");
             hand.appendChild(div);
             let s = div.style;
             s.backgroundColor = alleKarten[card].color;
-            s.content = alleKarten[card].kartenwert;
         }
         let gesamtKarten = (alleKarten.length);
         let kartenWahl = prompt("Gib deine Kartenanzahl ein");
