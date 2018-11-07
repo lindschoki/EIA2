@@ -30,49 +30,47 @@ namespace UNO {
         { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }];
 
 
-    function content(): void {
+
+    function random(): number {
+        return Math.floor(Math.random() * Math.floor(alleKarten.length));
+    }
 
 
-        function random(_n: number): number {
-            return Math.floor(Math.random() * Math.floor(_n));
-        }
+    function createCard(card: number): void {
 
-
-        function createCard(card: number): void {
+        for (let i: number = 0; i < card; i++) {
+            let index: number = random();
             let div: HTMLElement = document.createElement("div");
             div.setAttribute("class", "Einzelkarten");
-            div.innerText = alleKarten[card].kartenwert;
+            div.innerText = alleKarten[index].kartenwert;
             let hand: HTMLElement = document.getElementById("Hand");
             hand.appendChild(div);
 
             let s: CSSStyleDeclaration = div.style;
-            s.backgroundColor = alleKarten[card].color;
+            s.backgroundColor = alleKarten[index].color;
         }
+    }
 
 
+    function ablage(): void {
+        let div: HTMLDivElement = document.createElement("div");
+        document.body.appendChild(div);
+        document.getElementById("Ablage").innerHTML += "Ablage";
+    }
+
+
+    function deck(): void {
+        let div: HTMLDivElement = document.createElement("div");
+        document.body.appendChild(div);
+        document.getElementById("Stapel").innerHTML += "Deck";
+    }
+
+    function content(): void {
         let gesamtKarten: number = (alleKarten.length);
         let kartenWahl: string = prompt("Gib deine Kartenanzahl ein");
         gesamtKarten = Number(kartenWahl);
 
-        for (let i: number = 0; i < gesamtKarten; i++) {
-            let gesamtKarten: number = random(alleKarten.length);
-            createCard(gesamtKarten);
-        }
-
-
-        function ablage(): void {
-            let div: HTMLDivElement = document.createElement("div");
-            document.body.appendChild(div);
-            document.getElementById("Ablage").innerHTML += "Ablage";
-        }
-
-
-        function deck(): void {
-            let div: HTMLDivElement = document.createElement("div");
-            document.body.appendChild(div);
-            document.getElementById("Stapel").innerHTML += "Deck";
-        }
-
+        createCard(gesamtKarten);
 
         ablage();
         deck();

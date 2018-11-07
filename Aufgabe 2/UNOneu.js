@@ -21,36 +21,36 @@ var UNO;
         { color: "#ffff00", kartenwert: "5" }, { color: "#ffff00", kartenwert: "6" }, { color: "#ffff00", kartenwert: "6" }, { color: "#ffff00", kartenwert: "7" }, { color: "#ffff00", kartenwert: "7" }, { color: "#ffff00", kartenwert: "8" }, { color: "#ffff00", kartenwert: "8" }, { color: "#ffff00", kartenwert: "9" }, { color: "#ffff00", kartenwert: "9" }, { color: "#ffff00", kartenwert: "Stop" },
         { color: "#ffff00", kartenwert: "Stop" }, { color: "#ffff00", kartenwert: "Swap" }, { color: "#ffff00", kartenwert: "Swap" }, { color: "#ffff00", kartenwert: "+2" }, { color: "#ffff00", kartenwert: "+2" },
         { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }, { color: "#black", kartenwert: "+4" }];
-    function content() {
-        function random(_n) {
-            return Math.floor(Math.random() * Math.floor(_n));
-        }
-        function createCard(card) {
+    function random() {
+        return Math.floor(Math.random() * Math.floor(alleKarten.length));
+    }
+    function createCard(card) {
+        for (let i = 0; i < card; i++) {
+            let index = random();
             let div = document.createElement("div");
             div.setAttribute("class", "Einzelkarten");
-            div.innerText = alleKarten[card].kartenwert;
+            div.innerText = alleKarten[index].kartenwert;
             let hand = document.getElementById("Hand");
             hand.appendChild(div);
             let s = div.style;
-            s.backgroundColor = alleKarten[card].color;
+            s.backgroundColor = alleKarten[index].color;
         }
+    }
+    function ablage() {
+        let div = document.createElement("div");
+        document.body.appendChild(div);
+        document.getElementById("Ablage").innerHTML += "Ablage";
+    }
+    function deck() {
+        let div = document.createElement("div");
+        document.body.appendChild(div);
+        document.getElementById("Stapel").innerHTML += "Deck";
+    }
+    function content() {
         let gesamtKarten = (alleKarten.length);
         let kartenWahl = prompt("Gib deine Kartenanzahl ein");
         gesamtKarten = Number(kartenWahl);
-        for (let i = 0; i < gesamtKarten; i++) {
-            let gesamtKarten = random(alleKarten.length);
-            createCard(gesamtKarten);
-        }
-        function ablage() {
-            let div = document.createElement("div");
-            document.body.appendChild(div);
-            document.getElementById("Ablage").innerHTML += "Ablage";
-        }
-        function deck() {
-            let div = document.createElement("div");
-            document.body.appendChild(div);
-            document.getElementById("Stapel").innerHTML += "Deck";
-        }
+        createCard(gesamtKarten);
         ablage();
         deck();
     }
