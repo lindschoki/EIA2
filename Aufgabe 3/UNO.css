@@ -1,0 +1,63 @@
+.Einzelkarten {
+	border: thin solid black;
+	border-radius: 8px;
+	padding: 20px;
+	font-size: 35px;
+	position: relative;
+	width: 150px;
+	height: 220px;
+	margin: 10px;
+	float: left;
+	text-align: center;
+	margin-left: 30px;
+	background-color: black;
+	color: white;
+	font-family: 'Concert One', cursive;
+}
+
+#Hand {
+	margin-top: 350px;
+}
+
+#Deck {
+	border: thin solid darkred;
+	border-radius: 10px;
+	text-align: center;
+	position: absolute;
+	color: white;
+	padding: 20px;
+	background-color: grey;
+	width: 180px;
+	height: 210px;
+	right: 30px;
+	top: 30px;
+	font-size: 25px;
+	font-family: 'Concert One', cursive;
+}
+
+#Pile {
+	border: thin solid darkred;
+	border-radius: 10px;
+	text-align: center;
+	position: absolute;
+	color: white;
+	padding: 20px;
+	background-color: grey;
+	width: 180px;
+	height: 210px;
+	left: 30px;
+	top: 30px;
+	font-size: 25px;
+	font-family: 'Concert One', cursive;
+}
+button {
+	color: black;
+	background-color: orange;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5em;
+	line-height: 1em;
+	padding: 0.2em 0.2em 0.2em 0.2em;
+	border-radius: 15px;
+	cursor: pointer; 
+	float: left; 
+}
