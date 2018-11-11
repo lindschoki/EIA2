@@ -2,7 +2,7 @@
 	border: thin solid black;
 	border-radius: 8px;
 	padding: 20px;
-	font-size: 35px;
+	font-size: 32px;
 	position: relative;
 	width: 150px;
 	height: 220px;
@@ -50,6 +50,7 @@
 	font-size: 25px;
 	font-family: 'Concert One', cursive;
 }
+
 button {
 	color: black;
 	background-color: orange;
