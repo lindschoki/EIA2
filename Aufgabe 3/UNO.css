@@ -1,4 +1,4 @@
-.Einzelkarten {
+#Hand div {
 	border: thin solid black;
 	border-radius: 8px;
 	padding: 20px;
@@ -52,13 +52,15 @@
 }
 
 button {
-	color: black;
-	background-color: orange;
-	font-family: 'Roboto', sans-serif;
+	color: white;
+	background-color: grey;
+	font-family: 'Concert One', cursive;
 	font-size: 1.5em;
 	line-height: 1em;
 	padding: 0.2em 0.2em 0.2em 0.2em;
-	border-radius: 15px;
+	border-radius: 10px;
 	cursor: pointer; 
 	float: left; 
+	height: 30px; 
+	margin-left: 25px; 
 }

@@ -37,7 +37,7 @@ namespace Uno1 {
     }
 
 
-    function createCards(_cards: number, cardNumber: number): void {
+    function createCards(_cards: number): void {
 
         for (let i: number = 0; i < _cards; i++) {
             let index: number = random();

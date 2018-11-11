@@ -25,11 +25,11 @@ var Uno1;
     function random() {
         return Math.floor(Math.random() * Math.floor(deck.length));
     }
-    function createCards(_cards, cardNumber) {
+    function createCards(_cards) {
         for (let i = 0; i < _cards; i++) {
             let index = random();
             let div = document.createElement("div");
-            div.setAttribute("id", "card" + cardNumber);
+            div.setAttribute("id", "card" + i);
             div.innerText = deck[index].value;
             let hand = document.getElementById("Hand");
             hand.appendChild(div);
@@ -43,11 +43,10 @@ var Uno1;
     }
     // function playCard(_click: MouseEvent): void {
     function content() {
-        let allCards = (deck.length);
+        let allCards = (random());
         let cardselection = prompt("Gib deine Kartenanzahl ein");
         allCards = Number(cardselection);
-        let i = deck.length;
-        createCards(allCards, i);
+        createCards(allCards);
     }
 })(Uno1 || (Uno1 = {}));
 //# sourceMappingURL=UNOneu.js.map
