@@ -90,7 +90,6 @@ namespace Uno1 {
     
     }*/
 
-
     function drawNewCard(): void {
         createCards(1);
     }
