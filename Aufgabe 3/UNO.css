@@ -13,6 +13,7 @@
 	background-color: black;
 	color: white;
 	font-family: 'Concert One', cursive;
+	cursor: pointer;
 }
 
 #Hand {
@@ -59,8 +60,24 @@
 	line-height: 1em;
 	padding: 0.2em 0.2em 0.2em 0.2em;
 	border-radius: 10px;
-	cursor: pointer; 
-	float: left; 
-	height: 35px; 
-	margin-left: 25px; 
+	cursor: pointer;
+	float: left;
+	height: 35px;
+	margin-left: 25px;
+}
+
+#Pile div {
+	border: thin solid darkred;
+	border-radius: 10px;
+	text-align: center;
+	position: absolute;
+	color: white;
+	padding: 20px;
+	background-color: grey;
+	width: 180px;
+	height: 210px;
+	left: 0px;
+	top: 0px;
+	font-size: 25px;
+	font-family: 'Concert One', cursive;
 }

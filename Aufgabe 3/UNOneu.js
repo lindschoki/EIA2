@@ -6,12 +6,10 @@ Datum: 11.11.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 **/
-/* leider bekomme ich es nicht hin, das meine Karten im handcards-array nach Farbe sortiert werden und auch das ablegen der Karten
-verstehe ich nicht richtig*/
 var Uno1;
 (function (Uno1) {
     document.addEventListener("DOMContentLoaded", content);
-    document.addEventListener("keyup", pressSpaceBaar);
+    document.addEventListener("keydown", pressSpaceBar);
     let deck = [
         { color: "#ff0000", value: "0" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "1" }, { color: "#ff0000", value: "2" }, { color: "#ff0000", value: "2" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "3" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "4" }, { color: "#ff0000", value: "5" },
         { color: "#ff0000", value: "5" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "6" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "7" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "8" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "9" }, { color: "#ff0000", value: "Stop" },
@@ -25,6 +23,17 @@ var Uno1;
         { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "8" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "9" }, { color: "#ffff00", value: "Stop" }, { color: "#ffff00", value: "Stop" }, { color: "#ffff00", value: "Swap" }, { color: "#ffff00", value: "Swap" }, { color: "#ffff00", value: "+2" }, { color: "#ffff00", value: "+2" },
         { color: "#black", value: "+4" }, { color: "#black", value: "+4" }, { color: "#black", value: "+4" }, { color: "#black", value: "+4" }, { color: "#black", value: "Colorchoice" }, { color: "#black", value: "Colorchoice" }, { color: "#black", value: "Colorchoice" }, { color: "#black", value: "Colorchoice" }];
     let handcards = [];
+    let pilecards = [];
+    function content() {
+        let allCards;
+        let cardselection = prompt("Gib deine Kartenanzahl ein");
+        allCards = Number(cardselection);
+        let button = document.getElementById("Sort");
+        button.addEventListener("click", sortHandCards);
+        let draw = document.getElementById("Deck");
+        draw.addEventListener("click", drawNewCard);
+        createCards(allCards);
+    }
     function random() {
         return Math.floor(Math.random() * Math.floor(deck.length));
     }
@@ -32,14 +41,15 @@ var Uno1;
         for (let i = 0; i < _cards; i++) {
             let index = random();
             let div = document.createElement("div");
-            div.setAttribute("id", "card" + i);
+            div.setAttribute("id", "" + i + "");
             div.innerText = deck[index].value;
             let hand = document.getElementById("Hand");
             hand.appendChild(div);
             let s = div.style;
             s.backgroundColor = deck[index].color;
-            deck.splice(index, 1);
             handcards.push(deck[index]);
+            deck.splice(index, 1);
+            div.addEventListener("click", playCard);
         }
         console.log(handcards);
         console.log(deck);
@@ -48,39 +58,46 @@ var Uno1;
         document.getElementById("Hand").innerHTML = "";
         for (let x = 0; x < handcards.length; x++) {
             let div = document.createElement("div");
-            div.setAttribute("id", "card" + x);
+            div.setAttribute("id", "" + x + "");
             div.innerText = handcards[x].value;
+            div.addEventListener("click", playCard);
             let hand = document.getElementById("Hand");
             hand.appendChild(div);
             let s = div.style;
             s.backgroundColor = handcards[x].color;
         }
     }
+    function valuesToSort(a, b) {
+        if (a.color > b.color) {
+            return 1;
+        }
+        if (a.color < b.color) {
+            return -1;
+        }
+    }
     function sortHandCards() {
-        console.log(handcards);
-        handcards.sort();
+        handcards.sort(valuesToSort);
         displayHand();
     }
-    /* function playCard(_click: MouseEvent): void {
-     
-     }*/
+    function playCard(_event) {
+        let domCard = _event.target;
+        let cardId = parseInt(domCard.id);
+        pilecards.push(handcards[cardId]);
+        let div = document.createElement("div");
+        div.innerText = handcards[cardId].value;
+        let ablage = document.getElementById("Pile");
+        ablage.appendChild(div);
+        let s = div.style;
+        s.backgroundColor = handcards[cardId].color;
+        handcards.splice(cardId, 1);
+        displayHand();
+    }
     function drawNewCard() {
         createCards(1);
     }
-    function pressSpaceBaar(_press) {
+    function pressSpaceBar(_press) {
         if (_press.keyCode == 32)
             drawNewCard();
-    }
-    function content() {
-        let allCards = (random());
-        let cardselection = prompt("Gib deine Kartenanzahl ein");
-        allCards = Number(cardselection);
-        let button = document.getElementById("Sort");
-        button.addEventListener("click", sortHandCards);
-        let draw = document.getElementById("Deck");
-        draw.addEventListener("click", drawNewCard);
-        createCards(allCards);
-        sortHandCards();
     }
 })(Uno1 || (Uno1 = {}));
 //# sourceMappingURL=UNOneu.js.map
