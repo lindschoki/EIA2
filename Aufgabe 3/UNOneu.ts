@@ -98,7 +98,7 @@ namespace Uno1 {
             return 1;
         }
         if (a.color < b.color) {
-            return -1;
+            return 0;
         }
     }
 
