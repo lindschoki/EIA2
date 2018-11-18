@@ -85,17 +85,15 @@ namespace Weihnachtsbaumkonfigurator {
         let red: HTMLElement = document.getElementById("fieldsetRoteKugeln");
         red.appendChild(ballStepperRed);
 
+        
+        let ballStepperWhite: Node = createStepper();
+        let white: HTMLElement = document.getElementById("fieldsetWeiseKugeln");
+        white.appendChild(ballStepperWhite);
 
 
-
-        //        let ballStepperWhite: Node = createStepper();
-        //        let white: HTMLElement = document.getElementById("fieldsetWeiseKugeln");
-        //        white.appendChild(ballStepperWhite);
-        //
-        //
-        //        let ballStepperGold: Node = createStepper();
-        //        let gold: HTMLElement = document.getElementById("fieldsetGoldeneKugeln");
-        //        gold.appendChild(ballStepperGold);
+        let ballStepperGold: Node = createStepper();
+        let gold: HTMLElement = document.getElementById("fieldsetGoldeneKugeln");
+        gold.appendChild(ballStepperGold);
 
         //            for (let i: number = 0; i < n; i++) {
         //                let kugelstepper: Node = createInput();
