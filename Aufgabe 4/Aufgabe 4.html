@@ -4,18 +4,52 @@
 <meta charset="utf-8">
 <title>Weihnachtsbaumkonfigurator</title>
 <link rel="stylesheet" type="text/css" href="Aufgabe 4.css">
-<link href="https://fonts.googleapis.com/css?family=Concert+One"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet"> 
 <script src="Aufgabe 4.js"></script>
 </head>
 <body>
 	<fieldset id="fieldsetBaum">
-		<legend>Baumart</legend>
+		<legend>Wählen Sie Ihren Weihnachtsbaum</legend>
+		<fieldset class="radioboxes" id="Baum1">Blaufichte</fieldset>
+		<fieldset class="radioboxes" id="Baum2">Fichte</fieldset>
+		<fieldset class="radioboxes" id="Baum3">Rotfichte</fieldset>
+		<fieldset class="radioboxes" id="Baum4">Edeltanne</fieldset>
+		<fieldset class="radioboxes" id="Baum5">Kiefer</fieldset>
 	</fieldset>
 	
 	<fieldset id="fieldsetKugeln">
-	<legend>Kugeln</legend>
+		<legend>Kugeln</legend>
+		<fieldset class="innerfieldsets" id="fieldsetRoteKugeln"><legend>Rote Kugeln</legend></fieldset>
+		<fieldset class="innerfieldsets" id="fieldsetWeiseKugeln"><legend>Weiße Kugeln</legend></fieldset>
+		<fieldset class="innerfieldsets" id="fieldsetGoldeneKugeln"><legend>Goldene Kugeln</legend></fieldset>
+	</fieldset>
 	
+	<fieldset id="fieldsetLichterketten">
+		<legend>Lichterketten</legend>
+		<fieldset class="innerfieldsets" id="3Meter"><legend>3 Meter Lichterkette</legend></fieldset>
+		<fieldset class="innerfieldsets" id="5Meter"><legend>5 Meter Lichterkette</legend></fieldset>
+		<fieldset class="innerfieldsets" id="10Meter"><legend>10 Meter Lichterkette</legend></fieldset>
+	</fieldset>
+	
+	<fieldset id="fieldsetKerzen">
+		<legend>Kerzen</legend>
+		<fieldset class="innerfieldsets" id="kerzerot"><legend>Rote Kerzen</legend></fieldset>
+		<fieldset class="innerfieldsets" id="kerzeweis"><legend>Weise Kerzen</legend></fieldset>
+		<fieldset class="innerfieldsets" id="kerzeweisrot"><legend>Weis-Rot Gestreifte Kerzen</legend></fieldset>
+	</fieldset>
+	
+	<fieldset id="fieldsetBaumkrone">
+		<legend>Meine Baumspitze</legend>
+		<fieldset class="radioboxes" id="Option1">Stern</fieldset>
+		<fieldset class="radioboxes" id="Option2">Engel</fieldset>
+	</fieldset>
+	
+	<fieldset id="Data">
+		<legend>Persönliche Daten</legend>
+	</fieldset>
+	
+	<fieldset id="shoppingcart">
+		<legend>Ihre Bestellung</legend>
 	</fieldset>
 </body>
 </html>

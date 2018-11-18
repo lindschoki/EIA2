@@ -1,1 +1,37 @@
-@CHARSET "ISO-8859-1";
+fieldset {
+	width: 300px;
+	font-family: 'Oswald', sans-serif;
+	color: black; 
+}
+
+.innerfieldsets {
+	background-color: #B22222; 
+}
+
+.radioboxes {
+	background-color: #B22222;
+}
+
+#shoppingcart { 
+	width: 500px;
+	height: 500px; 
+	left: 800px; 
+	top: 10px;
+	position: absolute; 
+}
+
+#fieldsetLichterketten {
+	position: absolute;
+	left: 400px;
+	top: 10px; 
+}
+
+#fieldsetKerzen {
+	position: absolute;
+	left: 400px; 
+	top: 250px; 
+}
+
+#Data {
+	height: 320px; 
+}
