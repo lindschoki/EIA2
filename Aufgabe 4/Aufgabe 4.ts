@@ -11,6 +11,8 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 und eine number besitzt: bei der consolen ausgeb kann nicht unterschieden werden (Ausgabe object object) weis nicht ob hier eine Vergleichsfunktion hilft, 
 habe es auf jeden Fall versucht, es kam dabei aber nichts raus.**/
 
+/**Über 10 Stunden am coden**/
+
 namespace Weihnachtsbaumkonfigurator {
 
     window.addEventListener("load", init);

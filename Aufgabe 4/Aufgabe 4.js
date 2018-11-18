@@ -9,6 +9,7 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 /** Leider habe ich Probleme den Inhalt meiner arrys mit meinen entsprechenden fieldsets zu verbinden und auch die Parameter machen Probleme, da mein interface ein string
 und eine number besitzt: bei der consolen ausgeb kann nicht unterschieden werden (Ausgabe object object) weis nicht ob hier eine Vergleichsfunktion hilft,
 habe es auf jeden Fall versucht, es kam dabei aber nichts raus.**/
+/**�ber 10 Stunden am coden**/
 var Weihnachtsbaumkonfigurator;
 (function (Weihnachtsbaumkonfigurator) {
     window.addEventListener("load", init);
