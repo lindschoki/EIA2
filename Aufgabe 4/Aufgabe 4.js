@@ -1,3 +1,14 @@
+/**
+Aufgabe: 4
+Name: Arno Lindner
+Matrikel: 259153
+Datum: 18.11.2018
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+**/
+/** Leider habe ich Probleme den Inhalt meiner arrys mit meinen entsprechenden fieldsets zu verbinden und auch die Parameter machen Probleme, da mein interface ein string
+und eine number besitzt: bei der consolen ausgeb kann nicht unterschieden werden (Ausgabe object object) weis nicht ob hier eine Vergleichsfunktion hilft,
+habe es auf jeden Fall versucht, es kam dabei aber nichts raus.**/
 var Weihnachtsbaumkonfigurator;
 (function (Weihnachtsbaumkonfigurator) {
     window.addEventListener("load", init);
@@ -13,6 +24,13 @@ var Weihnachtsbaumkonfigurator;
         { name: "Engel", price: 10 }, { name: "Stern", price: 12 }];
     let shoppingcart = [];
     function init(_event) {
+        //        let fieldsets: NodeListOf<HTMLFieldSetElement> =
+        //            document.getElementsByTagName("fieldset");
+        //
+        //        for (let i: number = 0; i < fieldsets.length; i++) {
+        //            let fieldset: HTMLFieldSetElement = fieldsets[i];
+        //            fieldset.addEventListener("change", Change);
+        //       }
         createStepper();
         createBallSteppers();
         createLightstringSteppers();
@@ -21,18 +39,13 @@ var Weihnachtsbaumkonfigurator;
         createTreeTopRadioBoxes();
         createShoppingCart();
         createPersonalDatatFormular();
-        let fieldsets = document.getElementsByTagName("fieldset");
-        for (let i = 0; i < fieldsets.length; i++) {
-            let fieldset = fieldsets[i];
-            fieldset.addEventListener("change", handleChange);
-        }
     }
-    function handleChange(_event) {
-        let input = _event.target;
-        let id = input.id.split("");
-        if (this.id == "fieldsetRoteKugeln")
-            console.log("Changed " + balls[1] + " for " + balls[2]);
-    }
+    //    function Change(_event: Event): void {
+    //        let input: HTMLInputElement = <HTMLInputElement>_event.target;
+    //        let id: string[] = input.id.split
+    //        if (this.id == "fieldsetRoteKugeln")
+    //            console.log("Changed " + balls[1] + " for " + balls[2]);
+    //    }
     function createStepper() {
         let input = document.createElement("input");
         input.type = "number";
@@ -46,14 +59,12 @@ var Weihnachtsbaumkonfigurator;
         let ballStepperRed = createStepper();
         let red = document.getElementById("fieldsetRoteKugeln");
         red.appendChild(ballStepperRed);
-        //        let ballStepperWhite: Node = createStepper();
-        //        let white: HTMLElement = document.getElementById("fieldsetWeiseKugeln");
-        //        white.appendChild(ballStepperWhite);
-        //
-        //
-        //        let ballStepperGold: Node = createStepper();
-        //        let gold: HTMLElement = document.getElementById("fieldsetGoldeneKugeln");
-        //        gold.appendChild(ballStepperGold);
+        let ballStepperWhite = createStepper();
+        let white = document.getElementById("fieldsetWeiseKugeln");
+        white.appendChild(ballStepperWhite);
+        let ballStepperGold = createStepper();
+        let gold = document.getElementById("fieldsetGoldeneKugeln");
+        gold.appendChild(ballStepperGold);
         //            for (let i: number = 0; i < n; i++) {
         //                let kugelstepper: Node = createInput();
         //                let stepperKugeln: HTMLElement = document.getElementById("fieldKugeln");

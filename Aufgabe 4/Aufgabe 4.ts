@@ -41,13 +41,13 @@ namespace Weihnachtsbaumkonfigurator {
 
     function init(_event: Event): void {
 
-        let fieldsets: NodeListOf<HTMLFieldSetElement> =
-            document.getElementsByTagName("fieldset");
-
-        for (let i: number = 0; i < fieldsets.length; i++) {
-            let fieldset: HTMLFieldSetElement = fieldsets[i];
-            fieldset.addEventListener("change", Change);
-        }
+//        let fieldsets: NodeListOf<HTMLFieldSetElement> =
+//            document.getElementsByTagName("fieldset");
+//
+//        for (let i: number = 0; i < fieldsets.length; i++) {
+//            let fieldset: HTMLFieldSetElement = fieldsets[i];
+//            fieldset.addEventListener("change", Change);
+ //       }
 
         createStepper();
         createBallSteppers();
@@ -60,13 +60,13 @@ namespace Weihnachtsbaumkonfigurator {
 
     }
 
-    function Change(_event: Event): void {
-        let input: HTMLInputElement = <HTMLInputElement>_event.target;
-        let id: string[] = input.id.split
-        if (this.id == "fieldsetRoteKugeln")
-            console.log("Changed " + balls[1] + " for " + balls[2]);
+//    function Change(_event: Event): void {
+//        let input: HTMLInputElement = <HTMLInputElement>_event.target;
+//        let id: string[] = input.id.split
+//        if (this.id == "fieldsetRoteKugeln")
+//            console.log("Changed " + balls[1] + " for " + balls[2]);
 
-    }
+//    }
 
     function createStepper(): Node {
         let input: HTMLInputElement = document.createElement("input");
