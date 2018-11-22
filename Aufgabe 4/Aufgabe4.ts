@@ -7,70 +7,31 @@ Datum: 18.11.2018
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 **/
 
-/** Leider habe ich Probleme den Inhalt meiner arrys mit meinen entsprechenden fieldsets zu verbinden und auch die Parameter machen Probleme, da mein interface ein string 
-und eine number besitzt: bei der consolen ausgeb kann nicht unterschieden werden (Ausgabe object object) weis nicht ob hier eine Vergleichsfunktion hilft, 
-habe es auf jeden Fall versucht, es kam dabei aber nichts raus.**/
-
-/**‹ber 10 Stunden am coden**/
-
 namespace Weihnachtsbaumkonfigurator {
 
     window.addEventListener("load", init);
 
-    interface Products {
-        name: string;
-        price: number;
-    }
+    function init(): void {
 
-    let trees: Products[] = [
-        { name: "Blaufichte", price: 35 }, { name: "Fichte", price: 30 }, { name: "Rotfichte", price: 32 }, { name: "Edeltanne", price: 45 }, { name: "Kiefer", price: 40 }];
+        let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
 
-    let balls: Products[] = [
-        { name: "Rote Kugeln", price: 1.50 }, { name: "Goldene Kugeln", price: 1.60 }, { name: "Weiﬂe Kugeln", price: 1.00 }];
-
-    let lightstrings: Products[] = [
-        { name: "5 Meter Lichterkette", price: 12 }, { name: "3 Meter Lichterkette", price: 15 }, { name: "10 Meter Lichterkette", price: 20 }];
-
-    let candles: Products[] = [
-        { name: "Rote Kerzen", price: 2 }, { name: "Weiﬂe Kerzen", price: 1.50 }, { name: "Rot-Weiﬂ gestreifte Kerzen", price: 2.50 }];
-
-    let treetop: Products[] = [
-        { name: "Engel", price: 10 }, { name: "Stern", price: 12 }];
-
-    let shoppingcart: Products[] = [];
-
-
-
-    function init(_event: Event): void {
-
-        //        let fieldsets: NodeListOf<HTMLFieldSetElement> =
-        //            document.getElementsByTagName("fieldset");
-        //
-        //        for (let i: number = 0; i < fieldsets.length; i++) {
-        //            let fieldset: HTMLFieldSetElement = fieldsets[i];
-        //            fieldset.addEventListener("change", Change);
-        //       }
+        for (let i: number = 0; i < fieldsets.length; i++) {
+            let fieldset: HTMLFieldSetElement = fieldsets[i];
+            fieldset.addEventListener("change", Change);
+        }
 
         createBallSteppers();
         createLightStringSteppers();
         createCandleSteppers();
         createTreeRadioBoxes();
         createTreeTopRadioBoxes();
-        //        createShoppingCart();
-        //        createPersonalDatatFormular();
+        createPersonalDatatFormular();
+        createPostOptions();
 
     }
 
-    //    function Change(_event: Event): void {
-    //        let input: HTMLInputElement = <HTMLInputElement>_event.target;
-    //        let id: string[] = input.id.split
-    //        if (this.id == "fieldsetRoteKugeln")
-    //            console.log("Changed " + balls[1] + " for " + balls[2]);
-
-    //    }
-
-
-
+    let shoppingcart: Products[] = [];
+    let chosenProduct: Products;
 
     function createBallSteppers(): void {
 
@@ -81,15 +42,22 @@ namespace Weihnachtsbaumkonfigurator {
             input.max = "30";
             input.step = "1";
             input.value = "0";
-            let fieldSetKugeln: HTMLElement = document.getElementById("fieldSetKugeln");
-            let ballslabel: string = balls[i].name + " " + balls[i].price;
-            fieldSetKugeln.appendChild(ballslabel);
+            input.value = balls[i].name;
+            input.id = balls[i].name;
+            input.setAttribute("group", "balls");
+            input.setAttribute("number", "" + i);
+            let fieldSetKugeln: HTMLElement = document.getElementById("fieldsetKugeln");
+            let ballslabel: HTMLLabelElement = document.createElement("label");
             fieldSetKugeln.appendChild(input);
-            fieldSetKugeln.appendChild(document.createElement("br"));
+            input.appendChild(ballslabel);
+            fieldSetKugeln.appendChild(ballslabel);
+            ballslabel.innerHTML = " " + balls[i].name + " " + balls[i].price + " Euro";
+            ballslabel.appendChild(document.createElement("br"));
+            //            ballslabel.appendChild(document.createElement("br"));
         }
     }
 
-    
+
     function createLightStringSteppers(): void {
 
         for (let i: number = 0; i < lightstrings.length; i++) {
@@ -99,15 +67,20 @@ namespace Weihnachtsbaumkonfigurator {
             input.max = "30";
             input.step = "1";
             input.value = "0";
+            input.value = lightstrings[i].name;
+            input.id = lightstrings[i].name;
+            input.setAttribute("group", "lightstrings");
+            input.setAttribute("number", "" + i);
             let fieldSetLichterKetten: HTMLElement = document.getElementById("fieldsetLichterketten");
-            let lightstringslabel: string = lightstrings[i].name + " " + lightstrings[i].price;
-            fieldSetLichterKetten.appendChild(lightstringslabel);
+            let lightstringslabel: HTMLLabelElement = document.createElement("label");
             fieldSetLichterKetten.appendChild(input);
-            fieldSetLichterKetten.appendChild(document.createElement("br"));
+            input.appendChild(lightstringslabel);
+            fieldSetLichterKetten.appendChild(lightstringslabel);
+            lightstringslabel.innerHTML = " " + lightstrings[i].name + " " + lightstrings[i].price + " Euro";
+            lightstringslabel.appendChild(document.createElement("br"));
         }
     }
 
-    
     function createCandleSteppers(): void {
 
         for (let i: number = 0; i < candles.length; i++) {
@@ -117,69 +90,147 @@ namespace Weihnachtsbaumkonfigurator {
             input.max = "30";
             input.step = "1";
             input.value = "0";
+            input.value = candles[i].name;
+            input.id = candles[i].name;
+            input.setAttribute("group", "candles");
+            input.setAttribute("number", "" + i);
             let fieldSetKerzen: HTMLElement = document.getElementById("fieldsetKerzen");
-            let candleslabel: string = candles[i].name + " " + candles[i].price;
-            fieldSetKerzen.appendChild(candleslabel);
+            let candleslabel: HTMLLabelElement = document.createElement("label");
             fieldSetKerzen.appendChild(input);
-            fieldSetKerzen.appendChild(document.createElement("br"));
+            input.appendChild(candleslabel);
+            fieldSetKerzen.appendChild(candleslabel);
+            candleslabel.innerHTML = " " + candles[i].name + " " + candles[i].price + " Euro";
+            candleslabel.appendChild(document.createElement("br"));
         }
     }
 
-    
     function createTreeRadioBoxes(): void {
 
         for (let i: number = 0; i < trees.length; i++) {
             let input: HTMLInputElement = document.createElement("input");
             input.type = "radio";
             input.required = true;
-            input.name = "Container";
+            input.name = "ContainerTrees";
+            input.value = trees[i].name;
+            input.id = trees[i].name;
+            input.setAttribute("group", "trees");
+            input.setAttribute("number", "" + i);
             let fieldSetBaum: HTMLElement = document.getElementById("fieldsetBaum");
-            let treeslabel: string = trees[i].name + " " + trees[i].price;
-            fieldSetBaum.appendChild(treeslabel);
+            let treeslabel: HTMLLabelElement = document.createElement("label");
             fieldSetBaum.appendChild(input);
-            fieldSetBaum.appendChild(document.createElement("br"));
+            input.appendChild(treeslabel);
+            fieldSetBaum.appendChild(treeslabel);
+            treeslabel.innerHTML = " " + trees[i].name + " " + trees[i].price + " Euro";
+            treeslabel.appendChild(document.createElement("br"));
         }
     }
-    
-    
+
+
     function createTreeTopRadioBoxes(): void {
 
         for (let i: number = 0; i < treetop.length; i++) {
             let input: HTMLInputElement = document.createElement("input");
             input.type = "radio";
             input.required = true;
-            input.name = "Container";
+            input.name = "ContainerTreeTop";
+            input.value = treetop[i].name;
+            input.id = treetop[i].name;
+            input.setAttribute("group", "treetops");
+            input.setAttribute("number", "" + i);
             let fieldSetBaumKrone: HTMLElement = document.getElementById("fieldsetBaumkrone");
-            let treetoplabel: string = treetop[i].name + " " + treetop[i].price;
-            fieldSetBaumKrone.appendChild(treetoplabel);
+            let treetoplabel: HTMLLabelElement = document.createElement("label");
             fieldSetBaumKrone.appendChild(input);
-            fieldSetBaumKrone.appendChild(document.createElement("br"));
+            input.appendChild(treetoplabel);
+            fieldSetBaumKrone.appendChild(treetoplabel);
+            treetoplabel.innerHTML = " " + treetop[i].name + " " + treetop[i].price + " Euro";
+            treetoplabel.appendChild(document.createElement("br"));
         }
     }
 
+    function createPostOptions(): void {
+
+        for (let i: number = 0; i < post.length; i++) {
+            let input: HTMLInputElement = document.createElement("input");
+            input.type = "radio";
+            input.required = true;
+            input.name = "ContainerPost";
+            input.value = post[i].name;
+            input.id = post[i].name;
+            input.setAttribute("group", "post");
+            input.setAttribute("number", "" + i);
+            let fieldSetPost: HTMLElement = document.getElementById("fieldsetPost");
+            let postlabel: HTMLLabelElement = document.createElement("label");
+            fieldSetPost.appendChild(input);
+            input.appendChild(postlabel);
+            fieldSetPost.appendChild(postlabel);
+            postlabel.innerHTML = " " + post[i].name + " " + post[i].price + " Euro";
+            postlabel.appendChild(document.createElement("br"));
+        }
+    }
+
+
+    function createPersonalDatatFormular(): void {
+
+        let input: HTMLInputElement = document.createElement("input");
+        input.setAttribute("group", "data");
+        let data: HTMLElement = document.getElementById("Data");
+        data.appendChild(input);
+    }
+
+
+    function Change(_event: Event): void {
+
+        let target: HTMLInputElement = <HTMLInputElement>_event.target;
+        let productgroup: string = target.getAttribute("group");
+        let productnumber: number = parseInt(target.getAttribute("number"));
+        let group: Products[];
+        switch (productgroup) {
+
+            case "balls": group = balls; break;
+
+            case "lightstrings": group = lightstrings; break;
+
+            case "candles": group = candles; break;
+
+            case "trees": group = trees; break;
+
+            case "treetops": group = treetop; break;
+
+            case "post": group = post; break;
+
+        }
+
+        chosenProduct = group[productnumber];
+        shoppingcart.push(chosenProduct);
+        displayShoppingCart();
+
+    }
+
+    function displayShoppingCart(): void {
+        let div: HTMLElement = document.createElement("div");
+
+        for (let x: number = 0; x < shoppingcart.length; x++) {
+            let shoppingcartfieldset: HTMLElement = document.getElementById("shoppingcart");
+            shoppingcartfieldset.appendChild(div);
+            div.innerHTML = shoppingcart[x].name + " " + shoppingcart[x].price + " Euro";
+
+        }
+    }
+
+    function calcTotal(): void {
+
+
+        if (shoppingcart.push) {
+            let sum: number = 0;
+            let price: number = shoppingcart.price;
+            let total: HTMLElement = document.getElementById("Totalsum");
+            total.appendChild(price);
+            sum + price;
+        }
+    }
+
+
+
+    console.log(shoppingcart);
+
 }
-
-//function createShoppingCart(): void {
-//
-//    let div: HTMLElement = document.createElement("div");
-//    let shoppingcart: HTMLElement = document.getElementById("shoppingcart");
-//    shoppingcart.appendChild(div);
-//}
-//
-//
-//function createPersonalDatatFormular(): void {
-//
-//    for (let x: number = 0; x < 7; x++) {
-//        let selectionfields: HTMLElement = document.createElement("input");
-//        let data: HTMLElement = document.getElementById("Data");
-//        data.appendChild(selectionfields);
-//
-//        let s: CSSStyleDeclaration = selectionfields.style;
-//        s.display = "block";
-//        s.marginBottom = "20px";
-//        s.marginTop = "10px";
-//    }
-//}
-
-
-

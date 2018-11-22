@@ -6,174 +6,188 @@ Datum: 18.11.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 **/
-/** Leider habe ich Probleme den Inhalt meiner arrys mit meinen entsprechenden fieldsets zu verbinden und auch die Parameter machen Probleme, da mein interface ein string
-und eine number besitzt: bei der consolen ausgeb kann nicht unterschieden werden (Ausgabe object object) weis nicht ob hier eine Vergleichsfunktion hilft,
-habe es auf jeden Fall versucht, es kam dabei aber nichts raus.**/
-/**�ber 10 Stunden am coden**/
 var Weihnachtsbaumkonfigurator;
 (function (Weihnachtsbaumkonfigurator) {
     window.addEventListener("load", init);
-    let trees = [
-        { name: "Blaufichte", price: 35 }, { name: "Fichte", price: 30 }, { name: "Rotfichte", price: 32 }, { name: "Edeltanne", price: 45 }, { name: "Kiefer", price: 40 }];
-    let balls = [
-        { name: "Rote Kugeln", price: 1.50 }, { name: "Goldene Kugeln", price: 1.60 }, { name: "Wei�e Kugeln", price: 1.00 }];
-    let lightstrings = [
-        { name: "5 Meter Lichterkette", price: 12 }, { name: "3 Meter Lichterkette", price: 15 }, { name: "10 Meter Lichterkette", price: 20 }];
-    let candels = [
-        { name: "Rote Kerzen", price: 2 }, { name: "Wei�e Kerzen", price: 1.50 }, { name: "Rot-Wei� gestreifte Kerzen", price: 2.50 }];
-    let treetop = [
-        { name: "Engel", price: 10 }, { name: "Stern", price: 12 }];
-    let shoppingcart = [];
-    function init(_event) {
-        //        let fieldsets: NodeListOf<HTMLFieldSetElement> =
-        //            document.getElementsByTagName("fieldset");
-        //
-        //        for (let i: number = 0; i < fieldsets.length; i++) {
-        //            let fieldset: HTMLFieldSetElement = fieldsets[i];
-        //            fieldset.addEventListener("change", Change);
-        //       }
-        //createStepper();
+    function init() {
+        let fieldsets = document.getElementsByTagName("fieldset");
+        for (let i = 0; i < fieldsets.length; i++) {
+            let fieldset = fieldsets[i];
+            fieldset.addEventListener("change", Change);
+        }
         createBallSteppers();
-        //        createLightstringSteppers();
-        //        createThirdStepper();
-        //        createTreeRadioBoxes();
-        //        createTreeTopRadioBoxes();
-        //        createShoppingCart();
-        //        createPersonalDatatFormular();
+        createLightStringSteppers();
+        createCandleSteppers();
+        createTreeRadioBoxes();
+        createTreeTopRadioBoxes();
+        createPersonalDatatFormular();
+        createPostOptions();
     }
-    //    function Change(_event: Event): void {
-    //        let input: HTMLInputElement = <HTMLInputElement>_event.target;
-    //        let id: string[] = input.id.split
-    //        if (this.id == "fieldsetRoteKugeln")
-    //            console.log("Changed " + balls[1] + " for " + balls[2]);
-    //    }
+    let shoppingcart = [];
+    let chosenProduct;
     function createBallSteppers() {
-        for (let i = 0; i < balls.length; i++) {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.balls.length; i++) {
             let input = document.createElement("input");
             input.type = "number";
             input.min = "0";
             input.max = "30";
             input.step = "1";
             input.value = "0";
+            input.value = Weihnachtsbaumkonfigurator.balls[i].name;
+            input.id = Weihnachtsbaumkonfigurator.balls[i].name;
+            input.setAttribute("group", "balls");
+            input.setAttribute("number", "" + i);
             let fieldSetKugeln = document.getElementById("fieldsetKugeln");
-            let ballslabel;
-            ballslabel = balls[i].name + " " + balls[i].price;
-            // fieldSetKugeln.appendChild(ballslabel);
+            let ballslabel = document.createElement("label");
             fieldSetKugeln.appendChild(input);
-            fieldSetKugeln.appendChild(document.createElement("br"));
+            input.appendChild(ballslabel);
+            fieldSetKugeln.appendChild(ballslabel);
+            ballslabel.innerHTML = " " + Weihnachtsbaumkonfigurator.balls[i].name + " " + Weihnachtsbaumkonfigurator.balls[i].price + " Euro";
+            ballslabel.appendChild(document.createElement("br"));
         }
     }
+    function createLightStringSteppers() {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.lightstrings.length; i++) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.min = "0";
+            input.max = "30";
+            input.step = "1";
+            input.value = "0";
+            input.value = Weihnachtsbaumkonfigurator.lightstrings[i].name;
+            input.id = Weihnachtsbaumkonfigurator.lightstrings[i].name;
+            input.setAttribute("group", "lightstrings");
+            input.setAttribute("number", "" + i);
+            let fieldSetLichterKetten = document.getElementById("fieldsetLichterketten");
+            let lightstringslabel = document.createElement("label");
+            fieldSetLichterKetten.appendChild(input);
+            input.appendChild(lightstringslabel);
+            fieldSetLichterKetten.appendChild(lightstringslabel);
+            lightstringslabel.innerHTML = " " + Weihnachtsbaumkonfigurator.lightstrings[i].name + " " + Weihnachtsbaumkonfigurator.lightstrings[i].price + " Euro";
+            lightstringslabel.appendChild(document.createElement("br"));
+        }
+    }
+    function createCandleSteppers() {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.candles.length; i++) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.min = "0";
+            input.max = "30";
+            input.step = "1";
+            input.value = "0";
+            input.value = Weihnachtsbaumkonfigurator.candles[i].name;
+            input.id = Weihnachtsbaumkonfigurator.candles[i].name;
+            input.setAttribute("group", "candles");
+            input.setAttribute("number", "" + i);
+            let fieldSetKerzen = document.getElementById("fieldsetKerzen");
+            let candleslabel = document.createElement("label");
+            fieldSetKerzen.appendChild(input);
+            input.appendChild(candleslabel);
+            fieldSetKerzen.appendChild(candleslabel);
+            candleslabel.innerHTML = " " + Weihnachtsbaumkonfigurator.candles[i].name + " " + Weihnachtsbaumkonfigurator.candles[i].price + " Euro";
+            candleslabel.appendChild(document.createElement("br"));
+        }
+    }
+    function createTreeRadioBoxes() {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.trees.length; i++) {
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.required = true;
+            input.name = "ContainerTrees";
+            input.value = Weihnachtsbaumkonfigurator.trees[i].name;
+            input.id = Weihnachtsbaumkonfigurator.trees[i].name;
+            input.setAttribute("group", "trees");
+            input.setAttribute("number", "" + i);
+            let fieldSetBaum = document.getElementById("fieldsetBaum");
+            let treeslabel = document.createElement("label");
+            fieldSetBaum.appendChild(input);
+            input.appendChild(treeslabel);
+            fieldSetBaum.appendChild(treeslabel);
+            treeslabel.innerHTML = " " + Weihnachtsbaumkonfigurator.trees[i].name + " " + Weihnachtsbaumkonfigurator.trees[i].price + " Euro";
+            treeslabel.appendChild(document.createElement("br"));
+        }
+    }
+    function createTreeTopRadioBoxes() {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.treetop.length; i++) {
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.required = true;
+            input.name = "ContainerTreeTop";
+            input.value = Weihnachtsbaumkonfigurator.treetop[i].name;
+            input.id = Weihnachtsbaumkonfigurator.treetop[i].name;
+            input.setAttribute("group", "treetops");
+            input.setAttribute("number", "" + i);
+            let fieldSetBaumKrone = document.getElementById("fieldsetBaumkrone");
+            let treetoplabel = document.createElement("label");
+            fieldSetBaumKrone.appendChild(input);
+            input.appendChild(treetoplabel);
+            fieldSetBaumKrone.appendChild(treetoplabel);
+            treetoplabel.innerHTML = " " + Weihnachtsbaumkonfigurator.treetop[i].name + " " + Weihnachtsbaumkonfigurator.treetop[i].price + " Euro";
+            treetoplabel.appendChild(document.createElement("br"));
+        }
+    }
+    function createPostOptions() {
+        for (let i = 0; i < Weihnachtsbaumkonfigurator.post.length; i++) {
+            let input = document.createElement("input");
+            input.type = "radio";
+            input.required = true;
+            input.name = "ContainerPost";
+            input.value = Weihnachtsbaumkonfigurator.post[i].name;
+            input.id = Weihnachtsbaumkonfigurator.post[i].name;
+            input.setAttribute("group", "post");
+            input.setAttribute("number", "" + i);
+            let fieldSetPost = document.getElementById("fieldsetPost");
+            let postlabel = document.createElement("label");
+            fieldSetPost.appendChild(input);
+            input.appendChild(postlabel);
+            fieldSetPost.appendChild(postlabel);
+            postlabel.innerHTML = " " + Weihnachtsbaumkonfigurator.post[i].name + " " + Weihnachtsbaumkonfigurator.post[i].price + " Euro";
+            postlabel.appendChild(document.createElement("br"));
+        }
+    }
+    function createPersonalDatatFormular() {
+        let input = document.createElement("input");
+        input.setAttribute("group", "data");
+        let data = document.getElementById("Data");
+        data.appendChild(input);
+    }
+    function Change(_event) {
+        let target = _event.target;
+        let productgroup = target.getAttribute("group");
+        let productnumber = parseInt(target.getAttribute("number"));
+        let group;
+        switch (productgroup) {
+            case "balls":
+                group = Weihnachtsbaumkonfigurator.balls;
+                break;
+            case "lightstrings":
+                group = Weihnachtsbaumkonfigurator.lightstrings;
+                break;
+            case "candles":
+                group = Weihnachtsbaumkonfigurator.candles;
+                break;
+            case "trees":
+                group = Weihnachtsbaumkonfigurator.trees;
+                break;
+            case "treetops":
+                group = Weihnachtsbaumkonfigurator.treetop;
+                break;
+            case "post":
+                group = Weihnachtsbaumkonfigurator.post;
+                break;
+        }
+        chosenProduct = group[productnumber];
+        shoppingcart.push(chosenProduct);
+        displayShoppingCart();
+    }
+    function displayShoppingCart() {
+        let div = document.createElement("div");
+        for (let x = 0; x < shoppingcart.length; x++) {
+            let shoppingcartfieldset = document.getElementById("shoppingcart");
+            shoppingcartfieldset.appendChild(div);
+            div.innerHTML = shoppingcart[x].name + " " + shoppingcart[x].price + " Euro";
+        }
+    }
+    console.log(shoppingcart);
 })(Weihnachtsbaumkonfigurator || (Weihnachtsbaumkonfigurator = {}));
-//        let ballStepperWhite: Node = createStepper();
-//        let white: HTMLElement = document.getElementById("fieldsetWeiseKugeln");
-//        white.appendChild(ballStepperWhite);
-//
-//
-//        let ballStepperGold: Node = createStepper();
-//        let gold: HTMLElement = document.getElementById("fieldsetGoldeneKugeln");
-//        gold.appendChild(ballStepperGold);
-//            for (let i: number = 0; i < n; i++) {
-//                let kugelstepper: Node = createInput();
-//                let stepperKugeln: HTMLElement = document.getElementById("fieldKugeln");
-//                stepperKugeln.appendChild(kugelstepper);
-//            }
-//}
-//function createLightstringSteppers(): void {
-//
-//    let shortLightstring: Node = createStepper();
-//    let lightstring1: HTMLElement = document.getElementById("3Meter");
-//    lightstring1.appendChild(shortLightstring);
-//
-//    let middleLightstring: Node = createStepper();
-//    let lightstring2: HTMLElement = document.getElementById("5Meter");
-//    lightstring2.appendChild(middleLightstring);
-//
-//    let longLightstring: Node = createStepper();
-//    let lightstring3: HTMLElement = document.getElementById("10Meter");
-//    lightstring3.appendChild(longLightstring);
-//}
-//
-//
-//function createThirdStepper(): void {
-//
-//    let redCandel: Node = createStepper();
-//    let candel1: HTMLElement = document.getElementById("kerzerot");
-//    candel1.appendChild(redCandel);
-//
-//    let whiteCandel: Node = createStepper();
-//    let candel2: HTMLElement = document.getElementById("kerzeweis");
-//    candel2.appendChild(whiteCandel);
-//
-//    let redWhiteCandel: Node = createStepper();
-//    let candel3: HTMLElement = document.getElementById("kerzeweisrot");
-//    candel3.appendChild(redWhiteCandel);
-//}
-//
-//
-//function createRadioBoxes(): Node {
-//    let input: HTMLInputElement = document.createElement("input");
-//    input.type = "radio";
-//    input.required = true;
-//    input.name = "Container";
-//    return input;
-//}
-//
-//
-//function createTreeRadioBoxes(): void {
-//
-//    let blaufichte: Node = createRadioBoxes();
-//    let firstTree: HTMLElement = document.getElementById("Baum1");
-//    firstTree.appendChild(blaufichte);
-//
-//    let fichte: Node = createRadioBoxes();
-//    let secondTree: HTMLElement = document.getElementById("Baum2");
-//    secondTree.appendChild(fichte);
-//
-//    let rotfichte: Node = createRadioBoxes();
-//    let thirdTree: HTMLElement = document.getElementById("Baum3");
-//    thirdTree.appendChild(rotfichte);
-//
-//    let edeltanne: Node = createRadioBoxes();
-//    let fourthTree: HTMLElement = document.getElementById("Baum4");
-//    fourthTree.appendChild(edeltanne);
-//
-//    let kiefer: Node = createRadioBoxes();
-//    let fifthTree: HTMLElement = document.getElementById("Baum5");
-//    fifthTree.appendChild(kiefer);
-//}
-//
-//
-//function createTreeTopRadioBoxes(): void {
-//
-//    let star: Node = createRadioBoxes();
-//    let firstOption: HTMLElement = document.getElementById("Option1");
-//    firstOption.appendChild(star);
-//
-//    let angel: Node = createRadioBoxes();
-//    let secondOption: HTMLElement = document.getElementById("Option2");
-//    secondOption.appendChild(angel);
-//}
-//
-//
-//function createShoppingCart(): void {
-//
-//    let div: HTMLElement = document.createElement("div");
-//    let shoppingcart: HTMLElement = document.getElementById("shoppingcart");
-//    shoppingcart.appendChild(div);
-//}
-//
-//
-//function createPersonalDatatFormular(): void {
-//
-//    for (let x: number = 0; x < 7; x++) {
-//        let selectionfields: HTMLElement = document.createElement("input");
-//        let data: HTMLElement = document.getElementById("Data");
-//        data.appendChild(selectionfields);
-//
-//        let s: CSSStyleDeclaration = selectionfields.style;
-//        s.display = "block";
-//        s.marginBottom = "20px";
-//        s.marginTop = "10px";
-//    }
-//}
 //# sourceMappingURL=Aufgabe4.js.map

@@ -1,37 +1,33 @@
 fieldset {
-	width: 300px;
+	width: 350px;
 	font-family: 'Oswald', sans-serif;
 	color: black; 
+	background-color: lightblue; 
 }
 
-.innerfieldsets {
-	background-color: #B22222; 
-}
-
-.radioboxes {
-	background-color: #B22222;
-}
-
-#shoppingcart { 
-	width: 500px;
-	height: 500px; 
-	left: 800px; 
-	top: 10px;
+#shoppingcart {
 	position: absolute; 
+	left: 800px; 
+	height: 500px; 
+	width: 400px; 
+	top: 10px; 
+	background-color: lightgrey; 
 }
 
-#fieldsetLichterketten {
+#fieldsetBaumkrone {
 	position: absolute;
 	left: 400px;
-	top: 10px; 
+	top: 10px;
 }
 
-#fieldsetKerzen {
+#fieldsetPost {
 	position: absolute;
 	left: 400px; 
-	top: 250px; 
+	top: 100px;
 }
 
 #Data {
-	height: 320px; 
+	position: absolute; 
+	left: 400px; 
+	top: 215px; 
 }
