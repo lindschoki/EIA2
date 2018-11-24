@@ -217,17 +217,17 @@ namespace Weihnachtsbaumkonfigurator {
         }
     }
 
-    function calcTotal(): void {
-
-
-        if (shoppingcart.push) {
-            let sum: number = 0;
-            let price: number = shoppingcart.price;
-            let total: HTMLElement = document.getElementById("Totalsum");
-            total.appendChild(price);
-            sum + price;
-        }
-    }
+//    function calcTotal(): void {
+//
+//
+//        if (shoppingcart.push) {
+//            let sum: number = 0;
+//            let price: number = shoppingcart.price;
+//            let total: HTMLElement = document.getElementById("Totalsum");
+//            total.appendChild(price);
+//            sum + price;
+//        }
+//    }
 
 
 

@@ -188,6 +188,17 @@ var Weihnachtsbaumkonfigurator;
             div.innerHTML = shoppingcart[x].name + " " + shoppingcart[x].price + " Euro";
         }
     }
+    //    function calcTotal(): void {
+    //
+    //
+    //        if (shoppingcart.push) {
+    //            let sum: number = 0;
+    //            let price: number = shoppingcart.price;
+    //            let total: HTMLElement = document.getElementById("Totalsum");
+    //            total.appendChild(price);
+    //            sum + price;
+    //        }
+    //    }
     console.log(shoppingcart);
 })(Weihnachtsbaumkonfigurator || (Weihnachtsbaumkonfigurator = {}));
 //# sourceMappingURL=Aufgabe4.js.map
