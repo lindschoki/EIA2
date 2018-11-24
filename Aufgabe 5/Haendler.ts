@@ -13,21 +13,21 @@ namespace Aufgabe5 {
         [key: string]: Product[];
     }
 
-    export let data: OptionArticles = {
+    export let data1: OptionArticles = {
 
-        "balls": [
+        "Kugeln": [
             { name: "Rote Kugeln", price: 1.50 },
             { name: "Goldene Kugeln", price: 1.60 },
             { name: "Weisse Kugeln", price: 1.00 }
         ],
 
-        "lightstrings": [
+        "Lichterketten": [
             { name: "5 Meter Lichterkette", price: 12.00 },
             { name: "3 Meter Lichterkette", price: 15.00 },
             { name: "10 Meter Lichterkette", price: 20.00 }
         ],
 
-        "candles": [
+        "Kerzen": [
             { name: "Rote Kerzen", price: 2.00 },
             { name: "Weisse Kerzen", price: 1.50 },
             { name: "Rot-Weisse Kerzen", price: 2.50 }

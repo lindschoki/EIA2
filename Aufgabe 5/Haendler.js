@@ -1,17 +1,17 @@
 var Aufgabe5;
 (function (Aufgabe5) {
-    Aufgabe5.data = {
-        "balls": [
+    Aufgabe5.data1 = {
+        "Kugeln": [
             { name: "Rote Kugeln", price: 1.50 },
             { name: "Goldene Kugeln", price: 1.60 },
             { name: "Weisse Kugeln", price: 1.00 }
         ],
-        "lightstrings": [
+        "Lichterketten": [
             { name: "5 Meter Lichterkette", price: 12.00 },
             { name: "3 Meter Lichterkette", price: 15.00 },
             { name: "10 Meter Lichterkette", price: 20.00 }
         ],
-        "candles": [
+        "Kerzen": [
             { name: "Rote Kerzen", price: 2.00 },
             { name: "Weisse Kerzen", price: 1.50 },
             { name: "Rot-Weisse Kerzen", price: 2.50 }
