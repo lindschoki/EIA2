@@ -15,6 +15,7 @@ namespace Aufgabe5 {
 
             getSteppers(data1);
             getRadioBoxes(data2);
+            createDatatFormular();
 
         }
 
@@ -81,6 +82,14 @@ namespace Aufgabe5 {
             }
         }
 
+        function createDatatFormular(): void {
+
+            let input: HTMLInputElement = document.createElement("input");
+            input.setAttribute("group", "data");
+            let data: HTMLElement = document.getElementById("Data");
+            data.appendChild(input);
+        }
+
         function cartChange(_event: Event): void {
 
             let target: HTMLInputElement = <HTMLInputElement>_event.target;
@@ -104,7 +113,7 @@ namespace Aufgabe5 {
 
             }
 
-        
+
             shoppingcart.push(group[productnumber]);
             displayShoppingCart();
         }
@@ -116,9 +125,7 @@ namespace Aufgabe5 {
                 let shoppingcartfieldset: HTMLElement = document.getElementById("shoppingcart");
                 shoppingcartfieldset.appendChild(div);
                 div.innerHTML = shoppingcart[x].name + " " + shoppingcart[x].price + " Euro";
-
             }
         }
-
     }
 }   
