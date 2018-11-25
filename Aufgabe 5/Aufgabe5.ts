@@ -1,4 +1,17 @@
+/**
+Aufgabe: 4
+Name: Arno Lindner
+Matrikel: 259153
+Datum: 18.11.2018
+    
+Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
+**/
+
+/** bekomme es leider nicht hin die Produkte in den shopping cart zu pushen mir machen hier die verschiednen typen schwierigkeiten 
+string und Product, ich weis aber leider nicht, wie man das anders lösen kann **/
+
 namespace Aufgabe5 {
+    
 
     window.addEventListener("load", init);
 
@@ -124,6 +137,7 @@ namespace Aufgabe5 {
             for (let x: number = 0; x < shoppingcart.length; x++) {
                 let shoppingcartfieldset: HTMLElement = document.getElementById("shoppingcart");
                 shoppingcartfieldset.appendChild(div);
+                shoppingcartfieldset.innerHTML = "";
                 div.innerHTML = shoppingcart[x].name + " " + shoppingcart[x].price + " Euro";
             }
         }
