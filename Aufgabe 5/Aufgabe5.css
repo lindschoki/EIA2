@@ -1,0 +1,12 @@
+fieldset {
+	font-family: 'Roboto Slab', serif;
+	width: 400px; 
+	background-color: #e01005; 
+}
+
+input {
+	border-radius: 6px; 
+	border: #f0fffe;
+	width: 70px;
+	height: 20px; 
+}

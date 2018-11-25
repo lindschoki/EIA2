@@ -18,18 +18,18 @@ var Aufgabe5;
         ]
     };
     Aufgabe5.data2 = {
-        "trees": [
+        "Baumart": [
             { name: "Blaufichte", price: 35.00 },
             { name: "Fichte", price: 30.00 },
             { name: "Rotfichte", price: 32.00 },
             { name: "Edeltanne", price: 45.00 },
             { name: "Kiefer", price: 40.00 }
         ],
-        "treetop": [
+        "Baumspitzen": [
             { name: "Engel", price: 10.00 },
             { name: "Stern", price: 12.00 }
         ],
-        "post": [
+        "Post-Weg": [
             { name: "Hermes", price: 15.00 },
             { name: "DHL", price: 10.00 },
             { name: "Express", price: 20.00 }
