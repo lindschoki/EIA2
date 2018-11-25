@@ -13,11 +13,31 @@ namespace Aufgabe5 {
     }
 
 
-    function getSteppers(_product: OptionArticles): void {
+    function getSteppers(_product: OptionArticles, _content: Product): void {
+
+        let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
+        let legend: HTMLLegendElement = document.createElement("legend");
+        legend.innerText = _content.name + " | " + _content.price + " Euro";
+        fieldset.appendChild(legend);
+        document.body.appendChild(fieldset);
+        let input: HTMLInputElement = document.createElement("input");
+        input.type = "number";
+        input.min = "0";
+        input.max = "30";
+        input.step = "1";
+        input.value = "0";
+        input.id = _content.name;
+        input.setAttribute("Product", _content.name);
+        let label: HTMLLabelElement = document.createElement("label");
+        label.innerHTML = " " + _content.name + " " + _content.price + " Euro";
+        input.appendChild(label);
+        fieldset.appendChild(input);
+        fieldset.appendChild(document.createElement("br"));
+
         for (let key in _product) {
             let value: Product[] = _product[key];
             for (let i: number = 0; i < value.length; i++) {
-                createSteppers(value[i]);
+                fieldset.createSteppers(value[i]);
             }
         }
     }
@@ -31,50 +51,34 @@ namespace Aufgabe5 {
         }
     }
 
-    function createSteppers(_content: Product): void {
+    function createSteppers(_content: Product): string {
+        let inputfields: string = document.getElementsByTagName("input");
 
-       
-            let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
-            let legend: HTMLLegendElement = document.createElement("legend");
-            legend.innerText = _content.name + " | " + _content.price + " Euro";
-            fieldset.appendChild(legend);
-            document.body.appendChild(fieldset);
-        
-//        let input: HTMLInputElement = document.createElement("input");
-//        input.type = "number";
-//        input.min = "0";
-//        input.max = "30";
-//        input.step = "1";
-//        input.value = "0";
-//        input.id = _content.name;
-//        input.setAttribute("Product", _content.name);
-//        let label: HTMLLabelElement = document.createElement("label");
-//        label.innerHTML = " " + _content.name + " " + _content.price + " Euro";
-//        input.appendChild(label);
-//        fieldset.appendChild(input);
-//        fieldset.appendChild(document.createElement("br"));
-
+        return inputfields;
     }
 
-    function createRadioBoxes(_content: Product): void {
 
-        let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
-        let legend: HTMLLegendElement = document.createElement("legend");
-        legend.innerText = _content.name + " | " + _content.price + " Euro";
-        fieldset.appendChild(legend);
-        document.body.appendChild(fieldset);
-        let input: HTMLInputElement = document.createElement("input");
-        input.type = "radio";
-        input.required = true;
-        input.name = _content.name;
-        input.setAttribute("group", _content.name);
-        input.id = _content.name;
-        input.setAttribute("Product", _content.name);
-        let label: HTMLLabelElement = document.createElement("label");
-        label.innerHTML = " " + _content.name + " " + _content.price + " Euro";
-        input.appendChild(label);
-        fieldset.appendChild(input);
-        fieldset.appendChild(document.createElement("br"));
-    }
 }
+
+function createRadioBoxes(_content: Product): void {
+
+    let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
+    let legend: HTMLLegendElement = document.createElement("legend");
+    legend.innerText = _content.name + " | " + _content.price + " Euro";
+    fieldset.appendChild(legend);
+    document.body.appendChild(fieldset);
+    let input: HTMLInputElement = document.createElement("input");
+    input.type = "radio";
+    input.required = true;
+    input.name = _content.name;
+    input.setAttribute("group", _content.name);
+    input.id = _content.name;
+    input.setAttribute("Product", _content.name);
+    let label: HTMLLabelElement = document.createElement("label");
+    label.innerHTML = " " + _content.name + " " + _content.price + " Euro";
+    input.appendChild(label);
+    fieldset.appendChild(input);
+    fieldset.appendChild(document.createElement("br"));
+}
+
 

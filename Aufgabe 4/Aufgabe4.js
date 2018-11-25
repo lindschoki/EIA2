@@ -194,7 +194,7 @@ var Weihnachtsbaumkonfigurator;
     //        if (shoppingcart.push) {
     //            let sum: number = 0;
     //            let price: number = shoppingcart.price;
-    //            let total: HTMLElement = document.getElementById("Totalsum");
+    //            let total: HTMLElement = document.getElementById("Total");
     //            total.appendChild(price);
     //            sum + price;
     //        }
