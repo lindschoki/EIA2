@@ -11,7 +11,7 @@ var Aufgabe5;
     window.addEventListener("load", init);
     function init(_event) {
         createFieldset(Aufgabe5.data);
-        document.addEventListener("change", handleChange);
+        handleChange(_event);
     }
     function createFieldset(_product) {
         for (let key in _product) {
@@ -56,45 +56,43 @@ var Aufgabe5;
             }
         }
     }
-    //    function createCart(_event: Event): void {
-    //       // let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-    //        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-    //        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-    //       
-    //        
-    //        for (let i: number = 0; i < inputs.length; i++) {
-    //            
-    //            if (inputs[i].checked) {
-    //                let productname: string = target.getAttribute("name");
-    //                let productprice: number = parseFloat(target.getAttribute("price"));
-    //                console.log(productname, " ", productprice);
-    //                
-    //            }
-    //            
-    //        }
-    //        /** schleifen und if abfragen durch alle fieldsets durchlaufen lassen und schauen ob es gecheckt ist oder nicht wenn ja zu 
-    //        HTMLInputElement.checked f�r radio buttons, f�r stepper aktueller wert der hochgez�hlt wird)**/
-    //    }
     function handleChange(_event) {
         let inputs = document.getElementsByTagName("input");
         let target = _event.target;
         let cart = document.getElementById("Cart");
-        let div = document.createElement("div");
-        cart.appendChild(div);
         for (let i = 0; i < inputs.length; i++) {
             let product = inputs[i];
             if (product.type == "radio") {
                 if (product.checked == true) {
                     let productname = target.getAttribute("name");
                     let productprice = parseFloat(target.getAttribute("price"));
-                    div.innerHTML = productname + " " + productprice + " Euro";
+                    cart.innerHTML = productname + " " + productprice + " Euro";
                 }
             }
             if (product.type == "number") {
                 let productname = target.getAttribute("name");
                 let productprice = parseFloat(target.getAttribute("price"));
                 let amount = target.value;
-                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
+                cart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
+            }
+            let amount = parseInt(target.value);
+            if (amount > 1) {
+                displayCart(_event);
+            }
+        }
+    }
+    function displayCart(_event) {
+        let inputs = document.getElementsByTagName("input");
+        let target = _event.target;
+        let newcart = document.getElementById("Cart");
+        newcart.innerHTML = "";
+        for (let x = 0; x < inputs.length; x++) {
+            let product = inputs[x];
+            if (product.type == "number") {
+                let productname = target.getAttribute("name");
+                let productprice = parseFloat(target.getAttribute("price"));
+                let amount = target.value;
+                newcart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
             }
         }
     }

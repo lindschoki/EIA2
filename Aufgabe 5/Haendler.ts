@@ -9,11 +9,8 @@ namespace Aufgabe5 {
         [key: string]: Product[];
     }
 
-    export interface OneOptionArticles {
-        [key: string]: Product[];
-    }
 
-    export let data1: OptionArticles = {
+    export let data: OptionArticles = {
 
         "Kugeln": [
             { name: "Rote Kugeln", price: 1.50 },
@@ -31,10 +28,7 @@ namespace Aufgabe5 {
             { name: "Rote Kerzen", price: 2.00 },
             { name: "Weisse Kerzen", price: 1.50 },
             { name: "Rot-Weisse Kerzen", price: 2.50 }
-        ]
-    };
-
-    export let data2: OneOptionArticles = {
+        ], 
 
         "Baumart": [
             { name: "Blaufichte", price: 35.00 },

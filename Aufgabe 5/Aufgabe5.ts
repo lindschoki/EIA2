@@ -21,7 +21,7 @@ namespace Aufgabe5 {
 
 
         createFieldset(data);
-        document.addEventListener("change", handleChange);
+        handleChange(_event);
 
 
     }
@@ -76,39 +76,11 @@ namespace Aufgabe5 {
         }
     }
 
-    //    function createCart(_event: Event): void {
-    //       // let fieldsets: NodeListOf<HTMLFieldSetElement> = document.getElementsByTagName("fieldset");
-    //        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-    //        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-    //       
-    //        
-    //        for (let i: number = 0; i < inputs.length; i++) {
-    //            
-    //            if (inputs[i].checked) {
-    //                let productname: string = target.getAttribute("name");
-    //                let productprice: number = parseFloat(target.getAttribute("price"));
-    //                console.log(productname, " ", productprice);
-    //                
-    //            }
-    //            
-    //        }
-    //        /** schleifen und if abfragen durch alle fieldsets durchlaufen lassen und schauen ob es gecheckt ist oder nicht wenn ja zu 
-    //        HTMLInputElement.checked für radio buttons, für stepper aktueller wert der hochgezählt wird)**/
-    //    }
-
-
-
     function handleChange(_event: Event): void {
 
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         let cart: HTMLElement = document.getElementById("Cart");
-        let div: HTMLElement = document.createElement("div");
-        cart.appendChild(div);
-
-
-
-
 
 
         for (let i: number = 0; i < inputs.length; i++) {
@@ -121,7 +93,7 @@ namespace Aufgabe5 {
 
                     let productname: string = target.getAttribute("name");
                     let productprice: number = parseFloat(target.getAttribute("price"));
-                    div.innerHTML = productname + " " + productprice + " Euro";
+                    cart.innerHTML = productname + " " + productprice + " Euro";
                 }
 
                 //                else if (product.checked == false) {
@@ -134,50 +106,37 @@ namespace Aufgabe5 {
                 let productname: string = target.getAttribute("name");
                 let productprice: number = parseFloat(target.getAttribute("price"));
                 let amount: string = target.value;
-                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
-
-               
-
-
-
-
+                cart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
             }
+            
+            let amount: number = parseInt(target.value);
+            
+            if (amount > 1) {
+                displayCart(_event);
+                
+            }           
         }
-
     }
 
-//
-//    function displayCart(_event: Event): void {
-//        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-//        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-//        let newcart: HTMLElement = document.getElementById("Cart");
-//        let div: HTMLElement = document.createElement("div");
-//        newcart.appendChild(div);
-//        
-//
-//        newcart.appendChild(div);
-//
-//
-//        for (let x: number = 0; x < inputs.length; x++) {
-//            let product: HTMLInputElement = inputs[x];
-//            let amount: number = parseFloat(inputs[x].value);
-//
-//
-//            if (product.type == "number") {
-//
-//                if (amount < 1) {
-//                    div.innerHTML = "";
-//                    let productname: string = target.getAttribute("name");
-//                    let productprice: number = parseFloat(target.getAttribute("price"));
-//                    let amount: string = target.value;
-//                    div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
-//
-//
-//                }
-//            }
-//
-//
-//
-//        }
-//    }
+
+    function displayCart(_event: Event): void {
+        
+        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let target: HTMLInputElement = <HTMLInputElement>_event.target;
+        let newcart: HTMLElement = document.getElementById("Cart");
+        newcart.innerHTML = "";
+      
+        
+        for (let x: number = 0; x < inputs.length; x++) {
+            let product: HTMLInputElement = inputs[x];
+
+            if (product.type == "number") {
+                
+                let productname: string = target.getAttribute("name");
+                let productprice: number = parseFloat(target.getAttribute("price"));
+                let amount: string = target.value;
+                newcart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 var Aufgabe5;
 (function (Aufgabe5) {
-    Aufgabe5.data1 = {
+    Aufgabe5.data = {
         "Kugeln": [
             { name: "Rote Kugeln", price: 1.50 },
             { name: "Goldene Kugeln", price: 1.60 },
@@ -15,9 +15,7 @@ var Aufgabe5;
             { name: "Rote Kerzen", price: 2.00 },
             { name: "Weisse Kerzen", price: 1.50 },
             { name: "Rot-Weisse Kerzen", price: 2.50 }
-        ]
-    };
-    Aufgabe5.data2 = {
+        ],
         "Baumart": [
             { name: "Blaufichte", price: 35.00 },
             { name: "Fichte", price: 30.00 },
