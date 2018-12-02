@@ -1,0 +1,33 @@
+fieldset {
+	font-family: 'Roboto Slab', serif;
+	width: 330px; 
+	background-color: #e01005; 
+	border-radius: 10px; 
+}
+
+input {
+	border-radius: 6px; 
+	border: #f0fffe;
+	width: 70px;
+	height: 20px; 
+}
+
+#Cart {
+	position: absolute;
+	left: 500px; 
+	top: 125px; 
+	width: 500px; 
+	height: 700px;	
+	border-radius: 10px; 
+	font-size: 20px;
+}
+
+
+body {
+	background-color: #fca67c;
+}
+
+h1 {
+	font-family: 'Pacifico', cursive;
+	font-size: 40px; 
+}
