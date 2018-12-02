@@ -29,7 +29,7 @@ var Aufgabe5;
                 input.max = "30";
                 input.step = "1";
                 input.value = "0";
-                input.id = value[i].name;
+                input.setAttribute("id", value[i].name);
                 input.setAttribute("group", key);
                 input.setAttribute("name", value[i].name);
                 input.setAttribute("price", value[i].price.toString() + " Euro");
@@ -46,7 +46,7 @@ var Aufgabe5;
                     input.type = "radio";
                     input.required = true;
                     input.name = key;
-                    input.id = value[i].name;
+                    input.setAttribute("id", value[i].name);
                     input.setAttribute("group", key);
                     input.setAttribute("name", value[i].name);
                     input.setAttribute("price", value[i].price.toString() + " Euro");
@@ -85,14 +85,16 @@ var Aufgabe5;
         let inputs = document.getElementsByTagName("input");
         let target = _event.target;
         let newcart = document.getElementById("Cart");
-        newcart.innerHTML = "";
+        let div = document.createElement("div");
+        newcart.appendChild(div);
+        div.innerHTML = "";
         for (let x = 0; x < inputs.length; x++) {
             let product = inputs[x];
             if (product.type == "number") {
                 let productname = target.getAttribute("name");
                 let productprice = parseFloat(target.getAttribute("price"));
                 let amount = target.value;
-                newcart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
+                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
             }
         }
     }

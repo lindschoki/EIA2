@@ -45,7 +45,7 @@ namespace Aufgabe5 {
                 input.max = "30";
                 input.step = "1";
                 input.value = "0";
-                input.id = value[i].name;
+                input.setAttribute("id", value[i].name);
                 input.setAttribute("group", key);
                 input.setAttribute("name", value[i].name);
                 input.setAttribute("price", value[i].price.toString() + " Euro");
@@ -64,7 +64,7 @@ namespace Aufgabe5 {
                     input.type = "radio";
                     input.required = true;
                     input.name = key;
-                    input.id = value[i].name;
+                    input.setAttribute("id", value[i].name);
                     input.setAttribute("group", key);
                     input.setAttribute("name", value[i].name);
                     input.setAttribute("price", value[i].price.toString() + " Euro");
@@ -124,7 +124,9 @@ namespace Aufgabe5 {
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
         let target: HTMLInputElement = <HTMLInputElement>_event.target;
         let newcart: HTMLElement = document.getElementById("Cart");
-        newcart.innerHTML = "";
+        let div: HTMLElement = document.createElement("div");
+        newcart.appendChild(div);
+        div.innerHTML = "";
       
         
         for (let x: number = 0; x < inputs.length; x++) {
@@ -135,7 +137,7 @@ namespace Aufgabe5 {
                 let productname: string = target.getAttribute("name");
                 let productprice: number = parseFloat(target.getAttribute("price"));
                 let amount: string = target.value;
-                newcart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
+                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
             }
         }
     }

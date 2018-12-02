@@ -19,8 +19,8 @@ namespace Aufgabe5 {
         ],
 
         "Lichterketten": [
-            { name: "5 Meter Lichterkette", price: 12.00 },
-            { name: "3 Meter Lichterkette", price: 15.00 },
+            { name: "3 Meter Lichterkette", price: 12.00 },
+            { name: "5 Meter Lichterkette", price: 15.00 },
             { name: "10 Meter Lichterkette", price: 20.00 }
         ],
 
