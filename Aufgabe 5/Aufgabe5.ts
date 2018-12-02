@@ -11,6 +11,7 @@ namespace Aufgabe5 {
 
 
     window.addEventListener("load", init);
+    //let address: string = "https://eia-2-aufgabe-6.herokuapp.com";
 
 
 

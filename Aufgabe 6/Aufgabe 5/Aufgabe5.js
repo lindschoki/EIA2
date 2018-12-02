@@ -6,12 +6,12 @@ Datum: 18.11.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 **/
-var Aufgabe5;
-(function (Aufgabe5) {
+var Aufgabe5v2;
+(function (Aufgabe5v2) {
     window.addEventListener("load", init);
     //let address: string = "https://eia-2-aufgabe-6.herokuapp.com";
     function init(_event) {
-        createFieldset(Aufgabe5.data);
+        createFieldset(Aufgabe5v2.data);
         handleChange(_event);
     }
     function createFieldset(_product) {
@@ -99,5 +99,5 @@ var Aufgabe5;
             }
         }
     }
-})(Aufgabe5 || (Aufgabe5 = {}));
+})(Aufgabe5v2 || (Aufgabe5v2 = {}));
 //# sourceMappingURL=Aufgabe5.js.map
