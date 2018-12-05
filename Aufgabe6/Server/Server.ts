@@ -1,44 +1,53 @@
-import * as Http from "http"; //ts-Datei wird importiert als Http von "http"
-
+import * as Http from "http";
 import * as Url from "url";
 
+namespace L06_SendData {
+    interface product{
+        [key: string]:number;
+        }
+    console.log("Starting server");
+    let port: number = process.env.PORT;
+    if (port == undefined)
+        port = 8100;
 
-namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt   
+    let server: Http.Server = Http.createServer();
+    server.addListener("request", handleRequest);
+    server.addListener("listening", handleListen);
+    server.listen(port);
 
-    interface Product {
-        [key: string]: number;
-    }
-    
-    console.log("Starting server"); // Konsole gibt "Starting server" aus 
-    let port: number = process.env.PORT; // Variable port wird mit dem typ nummer deklariert und hat den einen wert vom Heroku-Server
-    if (port == undefined) // if Abfrage, wenn port variable undefiniert ist
-        port = 8100; // port variable wird der wert 8100 gegeben 
-
-    let server: Http.Server = Http.createServer(); // variable server wird vom typ Http.Server deklariert udn mit ihr wird ein Server kreiert ? (nicht sicher)
-    server.addListener("request", handleRequest); // server Variable erhält einen Listener der auf ein "request" hört und dann die Funktion HandleRequest ausführt
-    server.addListener("listening", handleListen); // server erhält einen weiteren Listener ("listening"?) / in dem Fall wird Funktion handleListen ausgeführt
-    server.listen(port); // server soll auf port variable hören
-
-    function handleListen(): void { // funktion handleListen() vom typ void wird deklariert
-        console.log("Listening"); // Konsole gibt "Listening" aus
+    function handleListen(): void {
+        console.log("Listening");
     }
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { // funktion handleRequest bekommt die Parameter _request vom typ Http.IncomingMessage und den Parameter _response vom typ Http.ServerResponse
-        // console.log("I hear voices!"); // Konsole gibt "I hear voices!" aus
+    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+        console.log("_request url");
+
+        _response.setHeader("content-type", "text/html; charset=utf-8");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
+
+       
         console.log(_request.url);
-
-        _response.setHeader("content-type", "text/html; charset=utf-8"); // Parameter _response fügt in den Header "content-type", "text/html; charset=utf-8" hinzu
-        _response.setHeader("Access-Control-Allow-Origin", "*"); // Parameter _response fügt in den Header "Access-Control-Allow-Origin", "*" ein (das js datei und der Server kompatibel sind, Server auf den Code zugreifen kann, weiß leider nicht genau was das macht)
-
-        let url: Product = Url.parse(_request.url, true).query;
-
-        for (let key in url) {
-
-
+        
+        //Aufgabe 7
+        let url: product = Url.parse(_request.url, true).query;
+        console.log(url);
+        
+        for (let key in url){
+            console.log(url[key]);
+            console.log(key);
+            
             _response.write(key + " = " + url[key] + "<br>");
         }
 
 
-        _response.end(); // _response wird beendet
+
+
+  
+   
+        
+        
+        
+        _response.end();
     }
+    
 }

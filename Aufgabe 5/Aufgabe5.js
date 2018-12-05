@@ -88,7 +88,5 @@ var Aufgabe5;
             }
         }
     }
-    function calcPrice() {
-    }
 })(Aufgabe5 || (Aufgabe5 = {}));
 //# sourceMappingURL=Aufgabe5.js.map

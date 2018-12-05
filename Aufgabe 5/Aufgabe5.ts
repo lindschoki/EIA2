@@ -85,7 +85,7 @@ namespace Aufgabe5 {
 
         for (let i: number = 0; i < inputs.length; i++) {
             let product: HTMLInputElement = inputs[i];
-            
+
             if (product.type == "number") {
                 let productname: string = product.getAttribute("name");
                 let productprice: number = parseFloat(product.getAttribute("price"));
@@ -111,15 +111,29 @@ namespace Aufgabe5 {
                     cart.innerHTML += productname + " " + productprice + " Euro" + "<br>";
 
                 } else if (product.checked == false) {
-                       
+
                 }
             }
         }
     }
-    
-    function calcPrice(): void {
-        
-    
-    
-    }
+
+//    let price: number = 0;
+//
+//    function calcPrice(): void {
+//        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+//        let product: HTMLInputElement = inputs;
+//        let productprice: number = parseFloat(product.getAttribute("price"));
+//        let amount: number = parseInt(product.value);
+//
+//        if (product.checked) {
+//            let inputprice: number = amount * productprice;
+//            price + inputprice;
+//
+//
+//
+//        }
+
+
+
+//    }
 }
