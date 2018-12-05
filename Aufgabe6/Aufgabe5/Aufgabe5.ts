@@ -67,7 +67,6 @@ namespace Aufgabe5v {
                     input.name = key;
                     input.setAttribute("id", value[i].name);
                     input.setAttribute("group", key);
-                    input.setAttribute("name", value[i].name);
                     input.setAttribute("price", value[i].price.toString() + " Euro");
                     input.setAttribute("value", "0");
                     input.addEventListener("change", handleChange);
@@ -80,66 +79,46 @@ namespace Aufgabe5v {
     function handleChange(_event: Event): void {
 
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
         let cart: HTMLElement = document.getElementById("Cart");
-
+        cart.innerHTML = "";
 
         for (let i: number = 0; i < inputs.length; i++) {
             let product: HTMLInputElement = inputs[i];
+            
+            if (product.type == "number") {
+                let productname: string = product.getAttribute("name");
+                let productprice: number = parseFloat(product.getAttribute("price"));
+                let amountString: string = product.value;
+                let amount: number = parseInt(product.value);
+
+
+                if (amount == 0) {
+
+                } else if (amount == 1) {
+                    cart.innerHTML += productname + " " + productprice + " Euro" + "<br>";
+                } else {
+                    cart.innerHTML += amountString + "X " + productname + " " + productprice + " Euro" + "<br>";
+                }
+            }
 
 
             if (product.type == "radio") {
+                let productname: string = product.getAttribute("id");
+                let productprice: number = parseFloat(product.getAttribute("price"));
 
                 if (product.checked == true) {
+                    cart.innerHTML += productname + " " + productprice + " Euro";
 
-                    let productname: string = target.getAttribute("name");
-                    let productprice: number = parseFloat(target.getAttribute("price"));
-                    cart.innerHTML = productname + " " + productprice + " Euro";
+                } else if (product.checked == false) {
+                       
                 }
-
-                //                else if (product.checked == false) {
-                //                    displayCart(_event);
-                //
-                //                }
             }
-
-            if (product.type == "number") {
-                let productname: string = target.getAttribute("name");
-                let productprice: number = parseFloat(target.getAttribute("price"));
-                let amount: string = target.value;
-                cart.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
-            }
-            
-            let amount: number = parseInt(target.value);
-            
-            if (amount > 1) {
-                displayCart(_event);
-                
-            }           
         }
     }
-
-
-    function displayCart(_event: Event): void {
+    
+    function calcPrice(): void {
         
-        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-        let newcart: HTMLElement = document.getElementById("Cart");
-        let div: HTMLElement = document.createElement("div");
-        newcart.appendChild(div);
-        div.innerHTML = "";
-      
-        
-        for (let x: number = 0; x < inputs.length; x++) {
-            let product: HTMLInputElement = inputs[x];
-
-            if (product.type == "number") {
-                
-                let productname: string = target.getAttribute("name");
-                let productprice: number = parseFloat(target.getAttribute("price"));
-                let amount: string = target.value;
-                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
-            }
-        }
+    
+    
     }
 }
