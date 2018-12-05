@@ -33,11 +33,12 @@ namespace Aufgabe5 {
 
         for (let key in _product) {
             let fieldset: HTMLFieldSetElement = document.createElement("fieldset");
+            let div: HTMLElement = document.getElementById("exportelements");
             fieldset.setAttribute("id", key);
             let legend: HTMLLegendElement = document.createElement("legend");
             legend.innerText = key;
             fieldset.appendChild(legend);
-            document.body.appendChild(fieldset);
+            div.appendChild(fieldset);
             let value: Product[] = _product[key];
             for (let i: number = 0; i < value.length; i++) {
                 let input: HTMLInputElement = document.createElement("input");
@@ -107,7 +108,7 @@ namespace Aufgabe5 {
                 let productprice: number = parseFloat(product.getAttribute("price"));
 
                 if (product.checked == true) {
-                    cart.innerHTML += productname + " " + productprice + " Euro";
+                    cart.innerHTML += productname + " " + productprice + " Euro" + "<br>";
 
                 } else if (product.checked == false) {
                        

@@ -31,3 +31,16 @@ h1 {
 	font-family: 'Pacifico', cursive;
 	font-size: 40px; 
 }
+
+#submit {
+	position: absolute; 
+	left: 505px; 
+	top: 860px; 
+	width: 90px; 
+	height: 50px; 
+	border-radius: 10px;
+	font-size: 20px; 
+	
+	
+	
+}

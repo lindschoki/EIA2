@@ -17,11 +17,12 @@ var Aufgabe5;
     function createFieldset(_product) {
         for (let key in _product) {
             let fieldset = document.createElement("fieldset");
+            let div = document.getElementById("exportelements");
             fieldset.setAttribute("id", key);
             let legend = document.createElement("legend");
             legend.innerText = key;
             fieldset.appendChild(legend);
-            document.body.appendChild(fieldset);
+            div.appendChild(fieldset);
             let value = _product[key];
             for (let i = 0; i < value.length; i++) {
                 let input = document.createElement("input");
@@ -80,7 +81,7 @@ var Aufgabe5;
                 let productname = product.getAttribute("id");
                 let productprice = parseFloat(product.getAttribute("price"));
                 if (product.checked == true) {
-                    cart.innerHTML += productname + " " + productprice + " Euro";
+                    cart.innerHTML += productname + " " + productprice + " Euro" + "<br>";
                 }
                 else if (product.checked == false) {
                 }
