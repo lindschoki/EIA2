@@ -121,28 +121,4 @@ namespace Aufgabe5 {
     
     
     }
-
-
-    //    function displayCart(_event: Event): void {
-    //
-    //        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
-    //        let target: HTMLInputElement = <HTMLInputElement>_event.target;
-    //        let newcart: HTMLElement = document.getElementById("Cart");
-    //
-    //
-    //        newcart.innerHTML = "";
-    //        for (let x: number = 0; x < inputs.length; x++) {
-    //            let product: HTMLInputElement = inputs[x];
-    //            let div: HTMLElement = document.createElement("div");
-    //            newcart.appendChild(div);
-    //
-    //            if (product.type == "number") {
-    //
-    //                let productname: string = target.getAttribute("name");
-    //                let productprice: number = parseFloat(target.getAttribute("price"));
-    //                let amount: string = target.value;
-    //                div.innerHTML = amount + "X " + productname + " " + productprice + " Euro";
-    //            }
-    //        }
-    //    }
 }
