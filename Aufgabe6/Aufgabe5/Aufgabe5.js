@@ -9,7 +9,6 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 var Aufgabe5v;
 (function (Aufgabe5v) {
     window.addEventListener("load", init);
-    //let address: string = "https://eia-2-aufgabe-6.herokuapp.com";
     function init(_event) {
         createFieldset(Aufgabe5v.data);
         handleChange(_event);
