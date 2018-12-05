@@ -33,8 +33,7 @@ namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt
         let url: Product = Url.parse(_request.url, true).query;
 
         for (let key in url) {
-            console.log(url[key]);
-            console.log(key);
+
 
             _response.write(key + " = " + url[key] + "<br>");
         }

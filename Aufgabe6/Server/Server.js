@@ -21,8 +21,6 @@ var L06_SendData;
         _response.setHeader("Access-Control-Allow-Origin", "*"); // Parameter _response f�gt in den Header "Access-Control-Allow-Origin", "*" ein (das js datei und der Server kompatibel sind, Server auf den Code zugreifen kann, wei� leider nicht genau was das macht)
         let url = Url.parse(_request.url, true).query;
         for (let key in url) {
-            console.log(url[key]);
-            console.log(key);
             _response.write(key + " = " + url[key] + "<br>");
         }
         _response.end(); // _response wird beendet
