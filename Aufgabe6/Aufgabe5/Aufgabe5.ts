@@ -36,7 +36,8 @@ namespace Aufgabe5v {
             let legend: HTMLLegendElement = document.createElement("legend");
             legend.innerText = key;
             fieldset.appendChild(legend);
-            document.body.appendChild(fieldset);
+            let div: HTMLElement = document.getElementById("exportelements");            
+            div.appendChild(fieldset);
             let value: Product[] = _product[key];
             for (let i: number = 0; i < value.length; i++) {
                 let input: HTMLInputElement = document.createElement("input");
@@ -75,6 +76,8 @@ namespace Aufgabe5v {
         }
     }
 
+    
+
     function handleChange(_event: Event): void {
 
         let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
@@ -83,7 +86,7 @@ namespace Aufgabe5v {
 
         for (let i: number = 0; i < inputs.length; i++) {
             let product: HTMLInputElement = inputs[i];
-            
+
             if (product.type == "number") {
                 let productname: string = product.getAttribute("name");
                 let productprice: number = parseFloat(product.getAttribute("price"));
@@ -109,15 +112,12 @@ namespace Aufgabe5v {
                     cart.innerHTML += productname + " " + productprice + " Euro";
 
                 } else if (product.checked == false) {
-                       
+
                 }
             }
         }
     }
-    
+
     function calcPrice(): void {
-        
-    
-    
     }
 }

@@ -24,6 +24,7 @@ namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt
 
         _response.write(_request.url); // _response.write greift auf _request.url zu 
         
+        
         _response.end(); // _response wird beendet
     }
 }

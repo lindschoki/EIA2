@@ -20,7 +20,8 @@ var Aufgabe5v;
             let legend = document.createElement("legend");
             legend.innerText = key;
             fieldset.appendChild(legend);
-            document.body.appendChild(fieldset);
+            let div = document.getElementById("exportelements");
+            div.appendChild(fieldset);
             let value = _product[key];
             for (let i = 0; i < value.length; i++) {
                 let input = document.createElement("input");
