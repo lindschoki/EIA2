@@ -1,6 +1,14 @@
 import * as Http from "http"; //ts-Datei wird importiert als Http von "http"
 
-namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt          
+import * as Url from "url";
+
+
+namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt   
+
+    interface Product {
+        [key: string]: number;
+    }
+    
     console.log("Starting server"); // Konsole gibt "Starting server" aus 
     let port: number = process.env.PORT; // Variable port wird mit dem typ nummer deklariert und hat den einen wert vom Heroku-Server
     if (port == undefined) // if Abfrage, wenn port variable undefiniert ist
@@ -16,15 +24,22 @@ namespace L06_SendData { // ein namespace / Aufgabenabgrenzung wird festgelegt
     }
 
     function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void { // funktion handleRequest bekommt die Parameter _request vom typ Http.IncomingMessage und den Parameter _response vom typ Http.ServerResponse
-        console.log("I hear voices!"); // Konsole gibt "I hear voices!" aus
+        // console.log("I hear voices!"); // Konsole gibt "I hear voices!" aus
         console.log(_request.url);
 
         _response.setHeader("content-type", "text/html; charset=utf-8"); // Parameter _response fügt in den Header "content-type", "text/html; charset=utf-8" hinzu
         _response.setHeader("Access-Control-Allow-Origin", "*"); // Parameter _response fügt in den Header "Access-Control-Allow-Origin", "*" ein (das js datei und der Server kompatibel sind, Server auf den Code zugreifen kann, weiß leider nicht genau was das macht)
 
-        _response.write(_request.url); // _response.write greift auf _request.url zu 
-        
-        
+        let url: Product = Url.parse(_request.url, true).query;
+
+        for (let key in url) {
+            console.log(url[key]);
+            console.log(key);
+
+            _response.write(key + " = " + url[key] + "<br>");
+        }
+
+
         _response.end(); // _response wird beendet
     }
 }

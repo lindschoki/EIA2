@@ -1,5 +1,6 @@
 "use strict";
 const Http = require("http"); //ts-Datei wird importiert als Http von "http"
+const Url = require("url");
 var L06_SendData;
 (function (L06_SendData) {
     console.log("Starting server"); // Konsole gibt "Starting server" aus 
@@ -14,11 +15,16 @@ var L06_SendData;
         console.log("Listening"); // Konsole gibt "Listening" aus
     }
     function handleRequest(_request, _response) {
-        console.log("I hear voices!"); // Konsole gibt "I hear voices!" aus
+        // console.log("I hear voices!"); // Konsole gibt "I hear voices!" aus
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8"); // Parameter _response f�gt in den Header "content-type", "text/html; charset=utf-8" hinzu
         _response.setHeader("Access-Control-Allow-Origin", "*"); // Parameter _response f�gt in den Header "Access-Control-Allow-Origin", "*" ein (das js datei und der Server kompatibel sind, Server auf den Code zugreifen kann, wei� leider nicht genau was das macht)
-        _response.write(_request.url); // _response.write greift auf _request.url zu 
+        let url = Url.parse(_request.url, true).query;
+        for (let key in url) {
+            console.log(url[key]);
+            console.log(key);
+            _response.write(key + " = " + url[key] + "<br>");
+        }
         _response.end(); // _response wird beendet
     }
 })(L06_SendData || (L06_SendData = {}));
