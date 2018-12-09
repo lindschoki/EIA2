@@ -1,13 +1,13 @@
 /**
-Aufgabe: 5
+Aufgabe: 7
 Name: Arno Lindner
 Matrikel: 259153
-Datum: 18.11.2018
+Datum: 09.12.2018
     
 Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 **/
 
-namespace Aufgabe5 {
+namespace Aufgabe7 {
 
 
     window.addEventListener("load", init);
@@ -16,15 +16,13 @@ namespace Aufgabe5 {
 
     function init(_event: Event): void {
 
-
-
-
-
         createFieldset(data);
         handleChange(_event);
-
+        setupAsyncForm();
 
     }
+
+    let address: string = "https://lindschoki-eia-2.herokuapp.com/";
 
 
     function createFieldset(_product: OptionArticles): void {
@@ -103,8 +101,8 @@ namespace Aufgabe5 {
 
 
             if (product.type == "radio") {
-               
-                let productname: string = product.getAttribute("name");
+
+                let productname: string = product.getAttribute("id");
                 let productprice: number = parseFloat(product.getAttribute("price"));
 
                 if (product.checked == true) {
@@ -118,10 +116,64 @@ namespace Aufgabe5 {
     }
 
 
+    function setupAsyncForm(): void {
+        let button: Element = document.querySelector("[type=button]");
+        button.addEventListener("click", handleClickOnAsync);
+    }
 
 
+    function handleClickOnAsync(_event: Event): void {
+        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+        let alertInput: string[] = [];
 
+        for (let i: number = 0; i < inputs.length; i++) {
+
+            let input: HTMLInputElement = inputs[i];
+            let productname1: string = input.getAttribute("id");
+            let productprice1: number = parseFloat(input.getAttribute("price"));
+
+
+            if (input.checked == true) {
+
+                let data: string = productname1 + " " + productprice1 + " Euro";
+
+                sendRequestWithCustomData(data);
+                alertInput.push(data);
+            }
+
+            let productname2: string = input.getAttribute("name");
+            let productprice2: number = parseFloat(input.getAttribute("price"));
+            let amount: number = parseInt(input.value);
+            let amountString: string = input.value;
+
+            if (amount > 0) {
+                
+                let data: string = amountString + " X " + productname2 + " " + productprice2 + " Euro";
+               
+                sendRequestWithCustomData(data);
+                alertInput.push(data);
+            }
+        }
+
+        alert(alertInput);
+       
+
+    }
+
+
+    function sendRequestWithCustomData(_data: string): void {
+        let xhr: XMLHttpRequest = new XMLHttpRequest();
+        xhr.open("GET", address + "?article=" + _data, true);
+        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.send();
+    }
+
+
+    function handleStateChange(_event: ProgressEvent): void {
+        let xhr: XMLHttpRequest = <XMLHttpRequest>_event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            console.log("ready: " + xhr.readyState, " | type: " + xhr.responseType, " | status:" + xhr.status, " | text:" + xhr.statusText);
+            console.log("response: " + xhr.response);
+        }
+    }
 }
-
-
-
