@@ -5,7 +5,7 @@
 
 import * as Http from "http";
 import * as Url from "url";
-import * as Database from "./database";
+import * as Database from "./Database";
 
 console.log("Server starting");
 
