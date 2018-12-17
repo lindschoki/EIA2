@@ -6,7 +6,7 @@
 const Mongo = require("mongodb");
 console.log("Database starting");
 let databaseURL = "mongodb://localhost:27017";
-let databaseName = "Test";
+let databaseName = "eia2-database";
 let db;
 let students;
 // running on heroku?
