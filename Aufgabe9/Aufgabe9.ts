@@ -129,7 +129,7 @@ namespace Canvas {
         crc2.beginPath();
         crc2.arc(300, 370, 5, 0, 2 * Math.PI);
         crc2.lineWidth = 3;
-        crc2.moveTo(300, 395);
+        crc2.moveTo(300, 495);
         crc2.lineTo(300, 372);
         crc2.moveTo(300, 382);
         crc2.lineTo(290, 382);
