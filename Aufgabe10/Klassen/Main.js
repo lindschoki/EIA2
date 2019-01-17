@@ -6,6 +6,7 @@ var Aufgabe10;
     let snowflakes = [];
     let trees = [];
     let childsleds = [];
+    let childsleds2 = [];
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         Aufgabe10.crc2 = canvas.getContext("2d");
@@ -27,13 +28,21 @@ var Aufgabe10;
             tree.y = Math.random() * 100 + 200;
             trees.push(tree);
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             let childsled = new Aufgabe10.ChildSled();
             childsled.x = Math.random() * 100 + 200;
             childsled.y = Math.random() * 80 - 240;
             childsled.dx = Math.random() * 2 - 7;
             childsled.dy = Math.random() * 1 + 2;
             childsleds.push(childsled);
+        }
+        for (let i = 0; i < 5; i++) {
+            let childsled2 = new Aufgabe10.ChildSled2();
+            childsled2.x = Math.random() * 100 + 200;
+            childsled2.y = 240;
+            childsled2.dx = Math.random() * 2 + 4;
+            childsled2.dy = Math.random() * 2 - 4;
+            childsleds2.push(childsled2);
         }
         update();
         console.log("Canvas start");
@@ -51,10 +60,15 @@ var Aufgabe10;
             let tree = trees[i];
             tree.draw();
         }
-        for (let i = 0; i < 10; i++) {
+        for (let i = 0; i < 5; i++) {
             let childsled = childsleds[i];
             childsled.move();
             childsled.draw();
+        }
+        for (let i = 0; i < 5; i++) {
+            let childsled2 = childsleds2[i];
+            childsled2.move();
+            childsled2.draw();
         }
         console.log("update");
     }

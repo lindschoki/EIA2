@@ -6,6 +6,7 @@ namespace Aufgabe10 {
     let snowflakes: Snowflake[] = [];
     let trees: Tree[] = [];
     let childsleds: ChildSled[] = [];
+    let childsleds2: ChildSled2[] = [];
 
     function init(_event: Event): void {
 
@@ -37,7 +38,7 @@ namespace Aufgabe10 {
             trees.push(tree);
         }
 
-        for (let i: number = 0; i < 10; i++) {
+        for (let i: number = 0; i < 5; i++) {
             let childsled: ChildSled = new ChildSled();
             childsled.x = Math.random() * 100 + 200;
             childsled.y = Math.random() * 80 - 240;
@@ -45,6 +46,16 @@ namespace Aufgabe10 {
             childsled.dy = Math.random() * 1 + 2;
 
             childsleds.push(childsled);
+        }
+        
+        for (let i: number = 0; i < 5; i++) {
+            let childsled2: ChildSled2 = new ChildSled2();
+            childsled2.x = Math.random() * 100 + 200;
+            childsled2.y =  240;
+            childsled2.dx = Math.random() * 2 + 4;
+            childsled2.dy = Math.random() * 2 - 4;
+
+            childsleds2.push(childsled2);
         }
 
         update();
@@ -69,10 +80,16 @@ namespace Aufgabe10 {
             tree.draw();
         }
 
-        for (let i: number = 0; i < 10; i++) {
+        for (let i: number = 0; i < 5; i++) {
             let childsled: ChildSled = childsleds[i];
             childsled.move();
             childsled.draw();
+        }
+        
+        for (let i: number = 0; i < 5; i++) {
+            let childsled2: ChildSled2 = childsleds2[i];
+            childsled2.move();
+            childsled2.draw();
         }
         
         console.log("update");
