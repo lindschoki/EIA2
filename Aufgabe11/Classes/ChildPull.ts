@@ -1,6 +1,6 @@
 namespace Aufgabe11 {
 
-    export class ChildPull extends ObjectStructure {
+    export class ChildPull extends ObjectStructure{
        
         constructor() {
         super();    
