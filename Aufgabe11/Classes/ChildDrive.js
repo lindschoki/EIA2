@@ -3,7 +3,6 @@ var Aufgabe11;
     class ChildDrive extends Aufgabe11.ObjectStructure {
         constructor() {
             super();
-            this.color = "black";
         }
         move() {
             this.x += this.dx;

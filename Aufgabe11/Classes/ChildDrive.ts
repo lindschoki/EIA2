@@ -4,7 +4,6 @@ namespace Aufgabe11 {
 
         constructor() {
             super();
-            this.color = "black";
         }
 
         move(): void {
@@ -20,7 +19,7 @@ namespace Aufgabe11 {
 
 
         draw(): void {
-
+            
             crc2.beginPath();
             crc2.arc(this.x + 300, this.y + 370, 5, 0, 2 * Math.PI);
             crc2.lineWidth = 3;
