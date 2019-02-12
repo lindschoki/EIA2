@@ -7,9 +7,13 @@ var Aufgabe10;
     let trees = [];
     let childsleds = [];
     let childsleds2 = [];
+    let coordinates = [];
+    let getX = 0;
+    let getY = 0;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         Aufgabe10.crc2 = canvas.getContext("2d");
+        canvas.addEventListener("click", getCanvasCoordinates);
         drawSky();
         drawSun();
         drawCloud();
@@ -46,6 +50,15 @@ var Aufgabe10;
         }
         update();
         console.log("Canvas start");
+    }
+    function getCanvasCoordinates(_event) {
+        let xCoordinate = _event.offsetX;
+        let yCoordinate = _event.offsetY;
+        getX = xCoordinate;
+        getY = yCoordinate;
+        console.log("x: " + getX, "y: " + getY);
+        coordinates.push(getX, getY);
+        console.log(coordinates);
     }
     function update() {
         window.setTimeout(update, 1000 / fps);

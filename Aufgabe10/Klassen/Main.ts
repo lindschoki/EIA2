@@ -7,11 +7,19 @@ namespace Aufgabe10 {
     let trees: Tree[] = [];
     let childsleds: ChildSled[] = [];
     let childsleds2: ChildSled2[] = [];
+    let coordinates: number[] = [];
+
+
+
+    let getX: number = 0;
+    let getY: number = 0;
+
 
     function init(_event: Event): void {
 
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+        canvas.addEventListener("click", getCanvasCoordinates);
 
         drawSky();
         drawSun();
@@ -47,11 +55,11 @@ namespace Aufgabe10 {
 
             childsleds.push(childsled);
         }
-        
+
         for (let i: number = 0; i < 5; i++) {
             let childsled2: ChildSled2 = new ChildSled2();
             childsled2.x = Math.random() * 100 + 200;
-            childsled2.y =  240;
+            childsled2.y = 240;
             childsled2.dx = Math.random() * 2 + 4;
             childsled2.dy = Math.random() * 2 - 4;
 
@@ -61,6 +69,19 @@ namespace Aufgabe10 {
         update();
         console.log("Canvas start");
     }
+
+    function getCanvasCoordinates(_event: MouseEvent): void {
+        let xCoordinate: number = _event.offsetX;
+        let yCoordinate: number = _event.offsetY;
+        getX = xCoordinate;
+        getY = yCoordinate;
+        console.log("x: " + getX, "y: " + getY);
+        
+        coordinates.push(getX, getY);
+        console.log(coordinates);
+    }
+    
+   
 
     function update(): void {
         window.setTimeout(update, 1000 / fps);
@@ -85,13 +106,13 @@ namespace Aufgabe10 {
             childsled.move();
             childsled.draw();
         }
-        
+
         for (let i: number = 0; i < 5; i++) {
             let childsled2: ChildSled2 = childsleds2[i];
             childsled2.move();
             childsled2.draw();
         }
-        
+
         console.log("update");
     }
 
