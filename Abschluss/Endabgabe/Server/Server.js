@@ -25,8 +25,7 @@ function handleRequest(_request, _response) {
         case "insert":
             let student = {
                 name: query["name"],
-                firstname: query["firstname"],
-                matrikel: parseInt(query["matrikel"])
+                score: parseInt(query["score"])
             };
             Database.insert(student);
             respond(_response, "storing data");
@@ -34,11 +33,8 @@ function handleRequest(_request, _response) {
         case "refresh":
             Database.findAll(findCallback);
             break;
-        case "find":
-            let matrikel = {
-                matrikel: parseInt(query["matrikel"])
-            };
-            Database.find(matrikel, findCallback);
+        case "findHighscore":
+            Database.findHighscore(findCallback);
             break;
         default:
             respond(_response, "unknown command: " + command);

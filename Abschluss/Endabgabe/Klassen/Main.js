@@ -37,7 +37,7 @@ var Endabgabe;
         setTimer();
         console.log("init");
         newCanvas = false;
-        timer = setInterval(setTimer, 100);
+        timer = setInterval(setTimer, 1100);
         playerScore = 0;
         gameTime = 50;
         children = [];

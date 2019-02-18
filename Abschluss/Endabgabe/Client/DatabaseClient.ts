@@ -23,7 +23,7 @@ namespace DatabaseClient {
 
     
     function find(_event: Event): void {
-        let query: string = "command=findHighscore";
+        let query: string = "command=find";
         console.log(query);
         sendRequest(query, handleFindResponse);
 }

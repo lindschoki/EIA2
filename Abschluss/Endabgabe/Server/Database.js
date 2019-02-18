@@ -40,11 +40,13 @@ function findHighscore(_callback) {
     var cursor = students.find().sort({ score: -1 }).limit(10);
     cursor.toArray(prepareAnswer);
     function prepareAnswer(_e, studentArray) {
-        if (_e)
+        if (_e) {
             _callback("Error" + _e);
-        else
+        }
+        else {
             // stringify creates a json-string, passed it back to _callback
             _callback(JSON.stringify(studentArray));
+        }
     }
 }
 exports.findHighscore = findHighscore;

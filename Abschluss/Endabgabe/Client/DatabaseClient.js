@@ -19,7 +19,7 @@ var DatabaseClient;
         sendRequest(query, handleInsertResponse);
     }
     function find(_event) {
-        let query = "command=findHighscore";
+        let query = "command=find";
         console.log(query);
         sendRequest(query, handleFindResponse);
     }
