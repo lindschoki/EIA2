@@ -64,7 +64,7 @@ var Endabgabe;
             child.state = "driveDown";
             child.x = Math.random() * 220 - 180;
             child.y = 280 + 100;
-            child.speed = Math.random() + 0.7;
+            child.geschwindigkeit = Math.random() + 0.7;
             children.push(child);
         }
         update();
@@ -110,9 +110,7 @@ var Endabgabe;
     }
     function getSnowballPosition(_event) {
         if (snowballsToThrow == 0) {
-            if (snowballs.length == 0)
-                endGame();
-            return;
+            endGame();
         }
         snowballsToThrow--;
         let snowball = new Endabgabe.Snowball();

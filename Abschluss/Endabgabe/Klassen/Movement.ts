@@ -2,7 +2,7 @@ namespace Endabgabe {
 
     export class Movement extends ObjectStructure {
 
-        speed: number;
+        geschwindigkeit: number;
 
         move(): void { };
         draw(): void { };

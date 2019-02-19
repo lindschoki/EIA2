@@ -27,22 +27,22 @@ var Endabgabe;
             }
         }
         driveDown() {
-            this.x -= this.speed * 6;
-            this.y += this.speed * 2;
+            this.x -= this.geschwindigkeit * 6;
+            this.y += this.geschwindigkeit * 2;
             if (this.x < 0) {
                 this.state = "moveUp";
             }
         }
         moveUp() {
-            this.x += this.speed * 6;
-            this.y -= this.speed * 2;
+            this.x += this.geschwindigkeit * 6;
+            this.y -= this.geschwindigkeit * 2;
             if (this.x > 559) {
                 this.state = "driveDown";
             }
         }
         driveOnlySled() {
-            this.x -= this.speed * 5;
-            this.y += this.speed * 3;
+            this.x -= this.geschwindigkeit * 5;
+            this.y += this.geschwindigkeit * 3;
         }
         drawUpHill() {
             Endabgabe.crc2.beginPath();

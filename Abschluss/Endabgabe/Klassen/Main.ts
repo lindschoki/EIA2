@@ -44,7 +44,7 @@ namespace Endabgabe {
         drawCloud();
         setTimer();
         console.log("init");
-        
+
         newCanvas = false;
         timer = setInterval(setTimer, 1100);
         playerScore = 0;
@@ -77,7 +77,7 @@ namespace Endabgabe {
             child.state = "driveDown";
             child.x = Math.random() * 220 - 180;
             child.y = 280 + 100;
-            child.speed = Math.random() + 0.7;
+            child.geschwindigkeit = Math.random() + 0.7;
             children.push(child);
         }
         update();
@@ -131,9 +131,7 @@ namespace Endabgabe {
     function getSnowballPosition(_event: MouseEvent): void {
 
         if (snowballsToThrow == 0) {
-            if (snowballs.length == 0)
-                endGame();
-            return;
+            endGame();
         }
         snowballsToThrow--;
 
@@ -143,7 +141,7 @@ namespace Endabgabe {
         snowball.radius = 20;
         snowballs.push(snowball);
     }
-    
+
     function setTimer(): void {
         document.getElementById("GameTimer").innerText = "Time: " + gameTime + " s";
         if (gameTime == 0) {
