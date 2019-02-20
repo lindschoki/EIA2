@@ -33,7 +33,7 @@ function handleRequest(_request, _response) {
         case "refresh":
             Database.findAll(findCallback);
             break;
-        case "findHighscore":
+        case "find":
             Database.findHighscore(findCallback);
             break;
         default:

@@ -44,7 +44,7 @@ function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerRes
             Database.findAll(findCallback);
             break;
 
-        case "findHighscore":
+        case "find":
             Database.findHighscore(findCallback);
             break;
 
